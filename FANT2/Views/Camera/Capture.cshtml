@@ -63,6 +63,7 @@
             document.getElementById('results').innerHTML =
                 '<img src="' + data_uri +'"/>';
 
+            document.getElementById('my_camera').style.display = "none";
 
             Webcam.upload(data_uri, '/Camera/Capture', function (code, text) {
                     alert('Photo Captured');
