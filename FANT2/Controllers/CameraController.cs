@@ -47,8 +47,16 @@ namespace FANT2.Controllers
                         var fileExtension = Path.GetExtension(fileName);
                         // Concating filename + fileExtension (unique filename)  
                         var newFileName = string.Concat(myUniqueFileName, fileExtension);
+
+                        //Generate folder if not there
+                        if (!Directory.Exists(Path.Combine(_environment.WebRootPath, "CameraPhotos")))
+                        {
+                            Directory.CreateDirectory(Path.Combine(_environment.WebRootPath, "CameraPhotos"));
+                        }
                         //  Generating Path to store photo   
                         var filepath = Path.Combine(_environment.WebRootPath, "CameraPhotos") + $@"\{newFileName}";
+
+
 
                         if (!string.IsNullOrEmpty(filepath))
                         {
@@ -59,7 +67,7 @@ namespace FANT2.Controllers
                         var imageBytes = System.IO.File.ReadAllBytes(filepath);
                         if (imageBytes != null)
                         {
-                            // Storing Image in Folder  
+                            // Storing Image in DB  
                             StoreInDatabase(imageBytes);
                         }
 

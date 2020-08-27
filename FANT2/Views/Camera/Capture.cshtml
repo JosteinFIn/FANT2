@@ -8,33 +8,27 @@
 <div class="col-md-2"></div>
 <div class="col-md-4">
     <div class="panel panel-default">
-        <div class="panel-heading">Camera</div>
+        <div class="panel-heading"></div>
         <div class="panel-body">
       
-         <div id="results"></div>
+         @*<div id="results"></div>*@
        
          <div id="my_camera"></div>
+
+         <!-- Saving image to hidden field -->
+         <input type="hidden" id="image_uri" name="ImageUri" />
 
             
             <!-- A button for taking snaps -->
             <form>
-                <input type="button" class="btn btn-success" value="Take Snapshot" onClick="take_snapshot()">
+                <input type="button" class="btn btn-success" value="Ta Bilde" onClick="take_snapshot()">
+                <input id="new" type="button" class="btn btn-success" value="Ta Nytt" onClick="save_image()" style="visibility: hidden;">
             </form>
-
+            @* <p id="result"></p> *@
         </div>
     </div>
 </div>
 
-@*<div class="col-md-4">
-    <div class="panel panel-default">
-        <div class="panel-heading">Captured Photo</div>
-        <div class="panel-body">
-            <div id="results">Your captured image will appear here...</div>
-        </div>
-        <br />
-        <br />
-    </div>
-</div>*@
 
 <div class="col-md-2">    </div>
     
@@ -54,19 +48,29 @@
 
 <!-- Code to handle taking the snapshot and displaying it locally -->
 <script language="JavaScript">
+
     function take_snapshot() {
         // take snapshot and get image data
         Webcam.snap(function (data_uri) {
 
             // display results in page
-            document.getElementById('results').innerHTML =
-                '<img src="' + data_uri +'"/>';
-
-            document.getElementById('my_camera').style.display = "none";
-
-            Webcam.upload(data_uri, '/Camera/Capture', function (code, text) {
-                    alert('Photo Captured');
-                });
+            //document.getElementById('results').innerHTML =
+            //    '<img src="' + data_uri + '"/>';
+            document.getElementById('new').style.visibility = "visible";
+            document.getElementById('image_uri').value = data_uri;
         });
+        Webcam.freeze();
     }
+
+    function save_image() {
+        var data_uri = document.getElementById('image_uri').value;
+        
+        //document.getElementById('result').innerHTML = data_uri;
+
+        Webcam.unfreeze();
+        //Webcam.upload(data_uri, '/Camera/Capture', function (code, text) { 
+        //    alert('Photo Captured');
+        //});  
+    }
+
 </script>
