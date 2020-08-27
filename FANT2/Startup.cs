@@ -73,7 +73,7 @@ namespace FANT2
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Home}/{action=Index}/{id?}");
+					pattern: "{controller=Annonses}/{action=Index}/{id?}");
 				endpoints.MapRazorPages();
 			});
 		}
