@@ -14,13 +14,10 @@ namespace FANT2.Models
 		public string UserId { get; set; }
 		public Category Category { get; set; }
 		public int CategoryId { get; set; }
-		[Required]
 		public bool TypeAnnonse { get; set; }
 		public string Image { get; set; }
 		public bool IsValuable { get; set; }
-		[Required]
 		public string Title { get; set; }
-		[Required]
 		public string Description { get; set; }
 		public DateTime Date { get; set; }
 	}

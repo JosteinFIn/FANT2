@@ -86,7 +86,7 @@
                 <select asp-for="CategoryId" asp-items="Model.Categories"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
-            
+             <div class="border-bottom"></div>
             <div>
                 <div class="cnt">
                     Annonse Type
@@ -94,6 +94,13 @@
                     <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div>
                 </div>
             </div>
+
+            <div class="border-bottom p-1"></div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="IsValuable">
+                <label>Er gjenstand verdifull?</label>
+            </div>
+             <div class="border-bottom p-2"></div>
             
 
             <div class="form-group">
