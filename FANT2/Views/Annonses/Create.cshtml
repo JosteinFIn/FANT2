@@ -31,7 +31,6 @@
                 <input type="button" class="btn btn-success" value="Ta Bilde" onClick="take_snapshot()">
                 <input id="new" type="button" class="btn btn-success" value="Ta Om Igjen" onClick="reset_image()" style="visibility: hidden;">
             </form>
-            <p id="result"></p>
         </div>
     </div>
 </div>
@@ -71,9 +70,7 @@
     function reset_image() {
         
         Webcam.unfreeze();
-        //Webcam.upload(data_uri, '/Camera/Capture', function (code, text) { 
-        //    alert('Photo Captured');
-        //});  
+
     }
 
 </script>
