@@ -64,11 +64,7 @@ namespace FANT2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-<<<<<<< HEAD
-        public async Task<IActionResult> Create(Annonse annonse)
-=======
         public async Task<IActionResult> Create(CreateAnnonse annonse)
->>>>>>> origin/Lema
         {
             if (ModelState.IsValid)
             {
