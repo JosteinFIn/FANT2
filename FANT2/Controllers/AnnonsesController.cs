@@ -8,16 +8,20 @@ using Microsoft.EntityFrameworkCore;
 using FANT2.Data;
 using FANT2.Models;
 using FANT2.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace FANT2.Controllers
 {
     public class AnnonsesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public AnnonsesController(ApplicationDbContext context)
+        public AnnonsesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Annonses
@@ -45,6 +49,7 @@ namespace FANT2.Controllers
         }
 
         // GET: Annonses/Create
+        [Authorize]
         public async Task<IActionResult> Create()
         {
 	        var categories = await _context.Category.ToListAsync();
@@ -63,6 +68,7 @@ namespace FANT2.Controllers
         {
             if (ModelState.IsValid)
             {
+	            var user = await _userManager.GetUserAsync(User);
                 var model = new Annonse
                 {
                     Kategori = new Category
@@ -75,6 +81,8 @@ namespace FANT2.Controllers
                    IsValuable = annonse.IsValuable,
                    TypeAnnonse = annonse.TypeAnnonse,
                    Date = annonse.Date,
+                   Image = annonse.Image,
+                   UserId = user.Id
 
                 };
                 _context.Add(annonse);

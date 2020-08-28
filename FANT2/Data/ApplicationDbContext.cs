@@ -15,7 +15,7 @@ namespace FANT2.Data
 		}
 		public DbSet<FANT2.Models.Annonse> Annonse { get; set; }
 		public DbSet<ImageStore> ImageStore { get; set; }
-
+		
 		public DbSet<Category> Category { get; set; }
 	}
 }
