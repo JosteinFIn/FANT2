@@ -1,5 +1,4 @@
 ﻿@model FANT2.Models.Annonse
-@using FANT2.Controllers; 
 
 
 @{
@@ -12,11 +11,80 @@
 <hr />
 
 
-<partial name="/Views/Camera/Capture.cshtml" />
+<!-- CAMERA -->
+
+<br />
+<div class="col-md-2"></div>
+<div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+      
+         <div id="my_camera"></div>
+
+         <!-- Saving image to hidden field -->
+         <input type="hidden" id="image_uri" name="ImageUri" />
+
+            
+            <!-- A button for taking snaps -->
+            <form>
+                <input type="button" class="btn btn-success" value="Ta Bilde" onClick="take_snapshot()">
+                <input id="new" type="button" class="btn btn-success" value="Ta Om Igjen" onClick="reset_image()" style="visibility: hidden;">
+            </form>
+            <p id="result"></p>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-2">    </div>
+    
+<!-- First, include the Webcam.js JavaScript Library -->
+<script src="~/webcamjs/webcam.js"></script>
+<!-- Configure a few settings and attach camera -->
+<script language="JavaScript">
+    Webcam.set({
+        width: 320,
+        height: 240,
+        image_format: 'jpeg',
+        jpeg_quality: 90,
+        flip_horiz: true
+    });
+    Webcam.attach('#my_camera');
+</script>
+
+<!-- Code to handle taking the snapshot and displaying it locally -->
+<script language="JavaScript">
+
+    function take_snapshot() {
+        // take snapshot and get image data
+        Webcam.snap(function (data_uri) {
+
+            
+            document.getElementById('new').style.visibility = "visible";
+            document.getElementById('Image').value = data_uri;
+            document.getElementById('result').innerHTML = data_uri;
+        });
+        Webcam.freeze();
+    }
+
+    function reset_image() {
+        
+        Webcam.unfreeze();
+        //Webcam.upload(data_uri, '/Camera/Capture', function (code, text) { 
+        //    alert('Photo Captured');
+        //});  
+    }
+
+</script>
+
+
+@* <partial name="/Views/Camera/Capture.cshtml" /> *@
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <input asp-for="Image" type="hidden" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
