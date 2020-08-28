@@ -171,9 +171,10 @@ namespace FANT2.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Image = table.Column<string>(nullable: true),
-                    KategoriId = table.Column<int>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
+                    CategoryId = table.Column<int>(nullable: false),
                     TypeAnnonse = table.Column<bool>(nullable: false),
+                    Image = table.Column<string>(nullable: true),
                     IsValuable = table.Column<bool>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: false),
@@ -183,17 +184,17 @@ namespace FANT2.Migrations
                 {
                     table.PrimaryKey("PK_Annonse", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Annonse_Category_KategoriId",
-                        column: x => x.KategoriId,
+                        name: "FK_Annonse_Category_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Category",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Annonse_KategoriId",
+                name: "IX_Annonse_CategoryId",
                 table: "Annonse",
-                column: "KategoriId");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

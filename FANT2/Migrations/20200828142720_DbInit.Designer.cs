@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FANT2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200828122349_DbInit")]
+    [Migration("20200828142720_DbInit")]
     partial class DbInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,9 @@ namespace FANT2.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -41,18 +44,18 @@ namespace FANT2.Migrations
                     b.Property<bool>("IsValuable")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("KategoriId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TypeAnnonse")
                         .HasColumnType("bit");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("KategoriId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Annonse");
                 });
@@ -274,9 +277,11 @@ namespace FANT2.Migrations
 
             modelBuilder.Entity("FANT2.Models.Annonse", b =>
                 {
-                    b.HasOne("FANT2.Models.Category", "Kategori")
+                    b.HasOne("FANT2.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("KategoriId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

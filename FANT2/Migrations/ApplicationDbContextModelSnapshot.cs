@@ -42,9 +42,6 @@ namespace FANT2.Migrations
                     b.Property<bool>("IsValuable")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("KategoriId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
