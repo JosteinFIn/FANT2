@@ -53,9 +53,9 @@
         <tr>
             <td>
                 @if (item.TypeAnnonse)
-                    colors = "#66cccc";
-                else{
                     colors = "#ff6666";
+                else{
+                    colors = "#66cccc";
                 }
                 <div class="card" style="width: 18rem; background-color: @colors">
                     <img class="card-img-top" alt="..." src=@Html.DisplayFor(modelItem => item.Image) />
