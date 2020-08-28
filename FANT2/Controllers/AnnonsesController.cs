@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FANT2.Data;
 using FANT2.Models;
+using FANT2.ViewModels;
 
 namespace FANT2.Controllers
 {
@@ -44,9 +45,13 @@ namespace FANT2.Controllers
         }
 
         // GET: Annonses/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+	        var categories = await _context.Category.ToListAsync();
+            return View(new CreateAnnonse()
+            {
+                Categories = categories.Select(x => new SelectListItem(x.Name, x.Id.ToString())).ToList(),
+            });
         }
 
         // POST: Annonses/Create
@@ -54,10 +59,24 @@ namespace FANT2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Date")] Annonse annonse)
+        public async Task<IActionResult> Create(CreateAnnonse annonse)
         {
             if (ModelState.IsValid)
             {
+                var model = new Annonse
+                {
+                    Kategori = new Category
+                    {
+                        Id = annonse.CategoryId
+                    },
+
+                   Title = annonse.Title,
+                   Description = annonse.Description,
+                   IsValuable = annonse.IsValuable,
+                   TypeAnnonse = annonse.TypeAnnonse,
+                   Date = annonse.Date,
+
+                };
                 _context.Add(annonse);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FANT2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200827153709_CreatedImageStore")]
-    partial class CreatedImageStore
+    [Migration("20200828082225_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,13 +35,38 @@ namespace FANT2.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsValuable")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("KategoriId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
-                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TypeAnnonse")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KategoriId");
+
+                    b.ToTable("Annonse");
+                });
+
+            modelBuilder.Entity("FANT2.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Annonse");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("FANT2.Models.ImageStore", b =>
@@ -260,6 +285,13 @@ namespace FANT2.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("FANT2.Models.Annonse", b =>
+                {
+                    b.HasOne("FANT2.Models.Category", "Kategori")
+                        .WithMany()
+                        .HasForeignKey("KategoriId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

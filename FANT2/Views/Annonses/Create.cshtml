@@ -1,4 +1,4 @@
-﻿@model FANT2.Models.Annonse
+﻿@model FANT2.ViewModels.CreateAnnonse
 @using FANT2.Controllers; 
 
 
@@ -6,9 +6,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Ny Annonse</h1>
 
-<h4>Annonse</h4>
 <hr />
 
 
@@ -18,6 +17,21 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <p class=" class-label">Kategori</p>
+                <select asp-for="CategoryId" asp-items="Model.Categories"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            
+            <div>
+                <div class="cnt">
+                    Annonse Type
+                    <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "false") <label>Funnet</label></div>
+                    <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div>
+                </div>
+            </div>
+            
+
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
