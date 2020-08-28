@@ -12,7 +12,8 @@ namespace FANT2.Models
 		public int Id { get; set; }
 
 		public string UserId { get; set; }
-		public Category Kategori { get; set; }
+		public Category Category { get; set; }
+		public int CategoryId { get; set; }
 		[Required]
 		public bool TypeAnnonse { get; set; }
 		public string Image { get; set; }
