@@ -1,4 +1,6 @@
 ﻿@model FANT2.Models.Annonse
+@using FANT2.Controllers; 
+
 
 @{
     ViewData["Title"] = "Create";
@@ -8,6 +10,10 @@
 
 <h4>Annonse</h4>
 <hr />
+
+
+<partial name="/Views/Camera/Capture.cshtml" />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
