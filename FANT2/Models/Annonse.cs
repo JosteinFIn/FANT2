@@ -18,7 +18,7 @@ namespace FANT2.Models
 		public bool TypeAnnonse { get; set; }
 		public string Image { get; set; }
 		public bool IsValuable { get; set; }
-
+		[Required]
 		public string Title { get; set; }
 		[Required]
 		public string Description { get; set; }
