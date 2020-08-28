@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace FANT2.Data.Migrations
+namespace FANT2.Migrations
 {
-    public partial class Initial : Migration
+    public partial class DbInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,20 +57,6 @@ namespace FANT2.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ImageStore",
-                columns: table => new
-                {
-                    ImageId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ImageBase64String = table.Column<string>(nullable: true),
-                    CreateDate = table.Column<DateTime>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ImageStore", x => x.ImageId);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,6 +171,7 @@ namespace FANT2.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Image = table.Column<string>(nullable: true),
                     KategoriId = table.Column<int>(nullable: true),
                     TypeAnnonse = table.Column<bool>(nullable: false),
                     IsValuable = table.Column<bool>(nullable: false),
@@ -267,9 +254,6 @@ namespace FANT2.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "ImageStore");
 
             migrationBuilder.DropTable(
                 name: "Category");

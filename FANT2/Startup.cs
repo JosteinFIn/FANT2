@@ -30,19 +30,21 @@ namespace FANT2
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
+
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
-			services.AddAuthentication().
-				AddGoogle(options =>
-				{
-					options.ClientId = Configuration["App:GoogleClient"];
-					options.ClientSecret = Configuration["App:GoogleClientSecret"];
-				}).
-				AddFacebook(option =>
-				{
-					option.AppId = Configuration["App:FacebookClientId"];
-					option.ClientSecret = Configuration["App:FacebookClientSecret"];
-				});
+
+			//services.AddAuthentication().
+			//	AddGoogle(options =>
+			//	{
+			//		options.ClientId = Configuration["App:GoogleClient"];
+			//		options.ClientSecret = Configuration["App:GoogleClientSecret"];
+			//	}).
+			//	AddFacebook(option =>
+			//	{
+			//		option.AppId = Configuration["App:FacebookClientId"];
+			//		option.ClientSecret = Configuration["App:FacebookClientSecret"];
+			//	});
 			services.AddControllersWithViews();
 			services.AddRazorPages();
 		}

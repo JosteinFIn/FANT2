@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-﻿@model FANT2.Models.Annonse
-=======
-﻿@model FANT2.ViewModels.CreateAnnonse
-@using FANT2.Controllers; 
->>>>>>> origin/Lema
+@model FANT2.ViewModels.CreateAnnonse
 
 
 @{
@@ -66,7 +61,6 @@
             
             document.getElementById('new').style.visibility = "visible";
             document.getElementById('Image').value = data_uri;
-            document.getElementById('result').innerHTML = data_uri;
         });
         Webcam.freeze();
     }

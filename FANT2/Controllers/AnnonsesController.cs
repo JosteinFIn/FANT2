@@ -59,29 +59,27 @@ namespace FANT2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-<<<<<<< HEAD
-        public async Task<IActionResult> Create(Annonse annonse)
-=======
-        public async Task<IActionResult> Create(CreateAnnonse annonse)
->>>>>>> origin/Lema
+
+		//public async Task<IActionResult> Create(Annonse annonse)
+
+
+		public async Task<IActionResult> Create(CreateAnnonse annonse)
+
         {
             if (ModelState.IsValid)
             {
                 var model = new Annonse
                 {
-                    Kategori = new Category
-                    {
-                        Id = annonse.CategoryId
-                    },
-
-                   Title = annonse.Title,
-                   Description = annonse.Description,
-                   IsValuable = annonse.IsValuable,
-                   TypeAnnonse = annonse.TypeAnnonse,
-                   Date = annonse.Date,
+                    CategoryId = annonse.CategoryId,
+                    Title = annonse.Title,
+                    Description = annonse.Description,
+                    IsValuable = annonse.IsValuable,
+                    TypeAnnonse = annonse.TypeAnnonse,
+                    Date = annonse.Date,
+                    Image = annonse.Image,
 
                 };
-                _context.Add(annonse);
+                _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

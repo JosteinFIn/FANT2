@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FANT2.Data.Migrations
+namespace FANT2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -26,6 +26,9 @@ namespace FANT2.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -33,16 +36,11 @@ namespace FANT2.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-=======
+
                     b.Property<bool>("IsValuable")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("KategoriId")
-                        .HasColumnType("int");
->>>>>>> origin/Lema
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -52,7 +50,7 @@ namespace FANT2.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("KategoriId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Annonse");
                 });
@@ -70,24 +68,6 @@ namespace FANT2.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("FANT2.Models.ImageStore", b =>
-                {
-                    b.Property<int>("ImageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImageBase64String")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ImageId");
-
-                    b.ToTable("ImageStore");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -292,9 +272,11 @@ namespace FANT2.Data.Migrations
 
             modelBuilder.Entity("FANT2.Models.Annonse", b =>
                 {
-                    b.HasOne("FANT2.Models.Category", "Kategori")
+                    b.HasOne("FANT2.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("KategoriId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

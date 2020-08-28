@@ -13,12 +13,18 @@ namespace FANT2.Data
 			: base(options)
 		{
 		}
-		public DbSet<FANT2.Models.Annonse> Annonse { get; set; }
-<<<<<<< HEAD
-=======
-		public DbSet<ImageStore> ImageStore { get; set; }
+		public DbSet<Annonse> Annonse { get; set; }
 
 		public DbSet<Category> Category { get; set; }
->>>>>>> origin/Lema
+
+		//protected override void OnModelCreating(ModelBuilder builder)
+		//{
+		//	builder.Entity<Category>()
+		//		.HasData(
+		//		new Category { Id = 0, Name = "Mobil" },
+		//		new Category { Id = 1, Name = "Klær" },
+		//		new Category { Id = 1, Name = "Stuff" }
+		//		);
+		//}
 	}
 }
