@@ -84,8 +84,13 @@ namespace FANT2.Controllers
                     TypeAnnonse = annonse.TypeAnnonse,
                     Date = annonse.Date,
                     Image = annonse.Image,
-
                 };
+
+                if (model.IsValuable)
+                {
+                    model.Image = null;
+                }
+
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
