@@ -22,23 +22,30 @@ else
         <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
     }
     <dl class="text-center">
-        <h5>
+        <h4>
             @Html.DisplayFor(model => model.Title)
-        </h5>
+        </h4>
 
-   
+        <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
+       
+            <dd >
+                DATO:  @Html.DisplayFor(model => model.Date)
+            </dd>
+            <dd>
+                @Html.DisplayFor(model=>model.UserId)
+            </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
+        
+
+        <br />
+        <p>Beskrivelse</p>
+        
+        <p>
             @Html.DisplayFor(model => model.Description)
         </p>
 
         
-        <dd >
-            DATO:  @Html.DisplayFor(model => model.Date)
-        </dd>
+       
     </dl>
 </div>
 <div>
