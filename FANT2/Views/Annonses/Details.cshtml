@@ -17,16 +17,22 @@ else
 <div>
     <hr/>
     <dl class="text-center">
-        <h5>
+        <h4>
             @Html.DisplayFor(model => model.Title)
-        </h5>
-
-   
+        </h4>
 
         <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
-        
+       
+            <dd >
+                DATO:  @Html.DisplayFor(model => model.Date)
+            </dd>
+            <dd>
+                @Html.DisplayFor(model=>model.UserId)
+            </dd>
+
         
 
+        <br />
         <p>Beskrivelse</p>
         
         <p>
@@ -34,9 +40,7 @@ else
         </p>
 
         
-        <dd >
-            DATO:  @Html.DisplayFor(model => model.Date)
-        </dd>
+       
     </dl>
 </div>
 <div>
