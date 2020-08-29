@@ -15,7 +15,12 @@ else
 </div>
 
 <div>
-    <hr/>
+    <h4>Annonse</h4>
+    <hr />
+    @if (Model.Image != null)
+    {
+        <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
+    }
     <dl class="text-center">
         <h4>
             @Html.DisplayFor(model => model.Title)
