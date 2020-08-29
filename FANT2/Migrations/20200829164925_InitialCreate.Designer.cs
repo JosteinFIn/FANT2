@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FANT2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200828145508_SetRequired")]
-    partial class SetRequired
+    [Migration("20200829164925_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,6 @@ namespace FANT2.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
