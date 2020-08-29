@@ -3,8 +3,16 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Annonse</h1>
+<div class="text-center">
+@if (Model.TypeAnnonse == true)
+{
+    <h1>SAVNET</h1>
+}
+else
+{
+    <h1>FUNNET</h1>
+}
+</div>
 
 <div>
     <hr/>
@@ -16,6 +24,8 @@
    
 
         <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
+        
+        
 
         <p>Beskrivelse</p>
         
