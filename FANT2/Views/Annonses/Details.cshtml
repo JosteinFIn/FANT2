@@ -4,31 +4,28 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Annonse</h1>
 
 <div>
-    <h4>Annonse</h4>
-    <hr />
+    <hr/>
     <dl class="text-center">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
+        <h5>
             @Html.DisplayFor(model => model.Title)
-        </dd>
+        </h5>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+   
+
         <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
-        <dd class="col-sm-10">
+
+        <p>Beskrivelse</p>
+        
+        <p>
             @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Date)
+        </p>
+
+        
+        <dd >
+            DATO:  @Html.DisplayFor(model => model.Date)
         </dd>
     </dl>
 </div>
