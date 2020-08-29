@@ -76,6 +76,7 @@ namespace FANT2.Controllers
 	            var user = await _userManager.GetUserAsync(User);
                 var model = new Annonse
                 {
+                    UserId = user.Id,
                     CategoryId = annonse.CategoryId,
                     Title = annonse.Title,
                     Description = annonse.Description,
