@@ -19,7 +19,8 @@
         <div class="panel-heading"></div>
         <div class="panel-body" style="overflow: hidden;">
 
-            <div id="my_camera" ></div>
+            @* <div id="my_camera" ></div> *@
+            <video autoplay id="my_camera" class="videoInsert"></video> 
 
             <!-- Saving image to hidden field -->
             <input type="hidden" id="image_uri" name="ImageUri" />
@@ -47,7 +48,7 @@
 <partial name="/Views/Camera/Capture.cshtml" /> *@
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mr-4 ml-4">
         <form asp-action="Create">
             <input asp-for="Image" type="hidden" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -101,7 +102,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-
+@* 
 <!-- First, include the Webcam.js JavaScript Library -->
 <script src="~/webcamjs/webcam.js"></script>
 <!-- Configure a few settings and attach camera -->
@@ -134,9 +135,18 @@
 
         Webcam.unfreeze();
 
-    }
+    } *@
 
+<!-- First, include the Webcam.js JavaScript Library -->
+<script src="~/webcamjs/camera.js"></script>
+
+<!-- Configure a few settings and attach camera -->
+
+<script language="JavaScript">
+    Camera.attach('my_camera');
 </script>
+
+
 <!-- Code contol visability -->
 
 <script language="JavaScript">
