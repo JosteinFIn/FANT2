@@ -22,6 +22,16 @@ namespace FANT2.Controllers
         {
             return View();
         }
+        public IActionResult OnBoarding1()
+        {
+            return View();
+        }
+
+        public IActionResult OnBoarding2()
+        {
+            return View();
+        }
+
 
 		public IActionResult Index()
 		{
