@@ -53,6 +53,7 @@ namespace FANT2.Controllers
         public async Task<IActionResult> Create()
         {
 	        var categories = await _context.Category.ToListAsync();
+            
             return View(new CreateAnnonse()
             {
                 Categories = categories.Select(x => new SelectListItem(x.Name, x.Id.ToString())).ToList(),
