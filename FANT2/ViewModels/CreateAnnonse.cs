@@ -19,7 +19,7 @@ namespace FANT2.ViewModels
 		public string Title { get; set; }
 		[Required]
 		public string Description { get; set; }
-		public DateTime Date { get; set; }
+		public DateTime Date { get; set; } = DateTime.Today;
 		public string Image { get; set; }
 
 	}
