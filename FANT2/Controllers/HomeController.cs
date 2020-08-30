@@ -18,6 +18,11 @@ namespace FANT2.Controllers
 			_logger = logger;
 		}
 
+        public IActionResult OnBoarding()
+        {
+            return View();
+        }
+
 		public IActionResult Index()
 		{
 			return View();
