@@ -14,12 +14,12 @@
 
 <br />
 <div class="col-md-2"></div>
-<div class="col-md-4" id="Picture" >
-    <div class="panel panel-default">
+<div id="Picture">
+    <div class="panel panel-default" ></div>
         <div class="panel-heading"></div>
-        <div class="panel-body">
+        <div class="panel-body" style="overflow: hidden;">
 
-            <div id="my_camera"></div>
+            <div id="my_camera" ></div>
 
             <!-- Saving image to hidden field -->
             <input type="hidden" id="image_uri" name="ImageUri" />
@@ -35,7 +35,7 @@
 </div>
 
 <!-- VALUE INFO -->
-<div class="alert alert-danger col-md-4" role="alert" id="ValueInfo" style="display: none; height:250px" >
+<div class="alert alert-danger col-md-4" role="alert" id="ValueInfo" style="display: none; height:250px">
     <h4>Verdifulle funnede gjenstander må identifiseres av eier ved beskrivende svar på annonse før utlevering, og vil defor pubiseres uten bilde.</h4>
 </div>
 
@@ -43,7 +43,8 @@
 
 
 
-@* <partial name="/Views/Camera/Capture.cshtml" /> *@
+@*
+<partial name="/Views/Camera/Capture.cshtml" /> *@
 
 <div class="row">
     <div class="col-md-4">
@@ -91,6 +92,8 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+        <input type="button" value="Click to Display Map" onclick="DisplayGoogleMap()" />  
+         <div id="myDiv" style="width:100%;height:400px;"></div>  
     </div>
 </div>
 
@@ -158,7 +161,35 @@
     }
 </script>
 
+<!-- Google maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRFFoSKFICLoH-f--RW2EHqA2OzwVLE4"></script> 
 
+<script type="text/javascript">  
+        function DisplayGoogleMap() {  
+  
+            //Set the Latitude and Longitude of the Map  
+            var myAddress = new google.maps.LatLng(59.9139, 10.7522);  
+  
+            //Create Options or set different Characteristics of Google Map  
+            var mapOptions = {  
+                center: myAddress,  
+                zoom: 15,  
+                minZoom: 30,  
+                mapTypeId: google.maps.MapTypeId.ROADMAP  
+            };  
+  
+            //Display the Google map in the div control with the defined Options  
+            var map = new google.maps.Map(document.getElementById("myDiv"), mapOptions);  
+  
+            //Set Marker on the Map  
+            var marker = new google.maps.Marker({  
+                position: myAddress,  
+                animation: google.maps.Animation.BOUNCE,  
+            });  
+  
+            marker.setMap(map);  
+           }      
+    </script>  
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
