@@ -15,27 +15,23 @@ else
 </div>
 
 <div>
-    <h4>Annonse</h4>
     <hr />
     @if (Model.Image != null)
     {
         <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
     }
-    <dl class="text-center">
+
+
+
+    <dl>
         <h4>
             @Html.DisplayFor(model => model.Title)
         </h4>
 
-        <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
        
             <dd >
                 DATO:  @Html.DisplayFor(model => model.Date)
             </dd>
-            <dd>
-                @Html.DisplayFor(model=>model.UserId)
-            </dd>
-
-        
 
         <br />
         <p>Beskrivelse</p>
