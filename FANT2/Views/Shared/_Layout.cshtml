@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FANT2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href='@Url.Content("~/css/site.css")' />
+    <link rel="stylesheet" href='@Url.Content("~/css/mystyle.css")' />
+   
  
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-0 fixed-bottom">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Annonses" asp-action="Index">FANT</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Start">Hjem</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,6 +26,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Start">Hjem</a>
                         </li>
                     </ul>
                 </div>
