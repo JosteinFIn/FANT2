@@ -27,8 +27,8 @@ namespace FANT2.Controllers
         // GET: Annonses
         public async Task<IActionResult> Index(string annonseCategory, string searchString)
         {
-	        IQueryable<Category> categoryQuery = from m in _context.Annonse
-		        select m.Category;
+	        IQueryable<string> categoryQuery = from m in _context.Annonse
+		        select m.Category.Name;
 
 	        var annonse = from m in _context.Annonse
 		        select m;
@@ -37,7 +37,12 @@ namespace FANT2.Controllers
 		        annonse = annonse.Where(x => x.Title.Contains(searchString));
 	        }
 
-	        var annonseCategoryVM = new AnnonseCategoryModel()
+	        if (!string.IsNullOrEmpty(annonseCategory))
+	        {
+		        annonse = annonse.Where(x => x.Category.Name.Contains(annonseCategory));
+	        }
+
+            var annonseCategoryVM = new AnnonseCategoryModel()
 	        {
 		        Categorys = new SelectList(await categoryQuery.Distinct().ToListAsync()),
 		        Annonses = await annonse.ToListAsync()
