@@ -318,3 +318,14 @@ form-create {
     border-radius: 20px;
  
 }
+.søk {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.button, select {
+    border-radius: 50px;
+    background-color: white;
+    display: grid;
+}
