@@ -13,11 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200828150018_SetRequired3.cs" />
-    <Compile Remove="Migrations\20200828150018_SetRequired3.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\img\onlinelogomaker-082120-1351-5578.png" />
   </ItemGroup>
 

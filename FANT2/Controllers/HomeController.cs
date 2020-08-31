@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FANT2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FANT2.Controllers
 {
@@ -32,6 +33,7 @@ namespace FANT2.Controllers
             return View();
         }
 
+		[Authorize]
         public IActionResult LandingPage()
         {
             return View();
