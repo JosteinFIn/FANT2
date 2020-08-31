@@ -16,11 +16,11 @@
     }
 </div>
 
-<div>
+<div class="col">
     <hr />
     @if (Model.Image != null)
     {
-        <img class="rounded mx-auto d-block" alt="..." src=@Html.DisplayFor(model => model.Image) />
+        <img class="rounded mx-auto d-block" alt="..." style="width: 100%" src=@Html.DisplayFor(model => model.Image) />
     }
 
 
@@ -47,9 +47,9 @@
 
 </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>|
-    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | 
+<a asp-action="Index">Back to List</a>|
+<a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+
 
