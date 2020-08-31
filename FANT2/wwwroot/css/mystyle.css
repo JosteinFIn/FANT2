@@ -47,7 +47,7 @@ html {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+  border-top: black;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
@@ -162,6 +162,12 @@ h2 {
 .img-start {
     padding: 15px;
     border-radius: 40px;
+   
+}
+
+.img-profil {
+    align-items: center;
+    justify-content: center;
 }
 
 .label {
@@ -197,6 +203,129 @@ h2 {
 }
 
 hr {
-    background-color: white;
+    background-color: black;
     font-weight: bold;
+}
+
+.border-bottom {
+    background-color: black;
+    font-weight: bold;
+}
+.card-link {
+    color: black;
+}
+#update-profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.class-label {
+    font-weight: bold;
+}
+.border-bottom p-1 {
+    font-weight: bold;
+    color: black;
+}
+
+.border-bottom p-2 {
+    font-weight: bold;
+    color: black;
+}
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-success {
+    background-color: white;
+    border-color: black;
+    color: black;
+    border-radius: 20px; 
+
+
+}
+
+btn-success:hover {
+    color:#f0d017;
+    background-color:white ;
+    border-color: black;
+}
+#my_camera {
+    
+    border-radius: 30px;
+    border: 2px solid black;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group-katogori {
+    display: inline;
+}
+.button, input {
+    border-radius: 50px;
+    background-color: white;
+    display: block;
+}
+
+.text-center valid {
+    border-radius: 50px;
+    background-color: white;
+    display: block;
+    border-color: black;
+}
+#span {
+    border-radius: 50px;
+    background-color: white;
+    display: block;
+}
+#select {
+    border-radius: 50px;
+    background-color: white;
+    display: block;
+}
+#CategoryId {
+    border-radius: 50px;
+    background-color: white;
+    display: grid;
+}
+
+#TypeAnnonse {
+    margin-right: 30px;
+}
+.radio-jquery-ui {
+    display: flex;
+    align-items: baseline;
+}
+.class-label {
+    margin-left: 10px;
+}
+
+form-create {
+    display: grid;
+}
+
+.btn-primary-create {
+    color: white;
+    border-color: black;
+    padding: 10px 30px;
+    background-color: #008000;
+    border: 2px solid black;
+    border-radius: 20px;
+ 
+}
+.søk {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.button, select {
+    border-radius: 50px;
+    background-color: white;
+    display: grid;
 }
