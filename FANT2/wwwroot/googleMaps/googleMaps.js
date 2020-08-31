@@ -1,5 +1,7 @@
 function DisplayGoogleMap() {  
-  
+    
+    var mapElement = document.getElementById("mapContainer");
+    mapElement.style.display = "block";
     //Set the Latitude and Longitude of the Map  
     var myAddress = new google.maps.LatLng(59.9139, 10.7522);  
 
@@ -15,12 +17,12 @@ function DisplayGoogleMap() {
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);  
 
     //Set Marker on the Map  
-    var marker = new google.maps.Marker({  
-        position: myAddress,  
-        animation: google.maps.Animation.BOUNCE,  
-    });  
+    // var marker = new google.maps.Marker({  
+    //     position: myAddress,  
+    //     animation: google.maps.Animation.BOUNCE,  
+    // });  
 
-    marker.setMap(map);
+    // marker.setMap(map);
     
     //---------------
 
