@@ -26,7 +26,7 @@
 
             <!-- A button for taking snaps -->
             <form>
-                <input type="button" class="btn btn-success" value="Ta Bilde" onClick="take_snapshot()">
+                <input type="button" class="btn btn-success" value="Ta Bilde"  onClick="take_snapshot()">
                 <input id="new" type="button" class="btn btn-success" value="Ta Om Igjen" onClick="reset_image()" style="visibility: hidden;">
             </form>
         </div>
@@ -142,6 +142,14 @@
 
 <script language="JavaScript">
     Camera.attach('my_camera');
+
+    function take_snapshot() {
+        Camera.capture('#image_uri');
+        document.getElementById('new').style.visibility = "visible";
+    }
+    function reset_image(){
+        Camera.playVideo();
+    }
 </script>
 
 

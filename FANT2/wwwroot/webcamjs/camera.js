@@ -3,11 +3,14 @@ if (
     "getUserMedia" in navigator.mediaDevices
   ) {
 
+var imageCapture;
+const video = document.querySelector("#my_camera");
+
 var Camera = {
     
     
     attach: function(id){
-
+      
         const constraints = {
             video: {
                 width: {
@@ -27,7 +30,11 @@ var Camera = {
           try {
                 const player = document.getElementById(id);
                 navigator.mediaDevices.getUserMedia(constraints)
-                    .then((videoStream) => {player.srcObject = videoStream});
+                    .then((videoStream) => {
+                      player.srcObject = videoStream;
+                      const track = videoStream.getVideoTracks()[0];
+                      imageCapture = new ImageCapture(track);
+                    })
             }
           
           catch (error) 
@@ -35,6 +42,39 @@ var Camera = {
               throw alert(error, "No inteface found");
           }
           
+      },
+
+      capture: function(){
+
+        // var imageCapture;
+        // const takePhotoButton = document.querySelector(buttonId);
+        // takePhotoButton.onclick = takePhoto;
+        var reader = new FileReader();
+        // takePhoto();
+
+        // function takePhoto() {
+          video.play();
+          imageCapture.takePhoto()
+            .then(function(blob) {
+              console.log('Took photo:', blob);
+              video.pause()
+              // .then(reader.readAsDataURL(blob))
+
+            reader.readAsDataURL(blob); 
+            reader.onloadend = function() {
+              var base64data = reader.result;                
+              console.log(base64data);
+              document.getElementById('Image').value = base64data;
+              }
+            // img.classList.remove('hidden');
+            // img.src = URL.createObjectURL(blob);
+          }).catch(function(error) {
+            console.log('takePhoto() error: ', error);
+          });
+        // }
+      },
+      playVideo: function() {
+        video.play();
       }
     }
 }
