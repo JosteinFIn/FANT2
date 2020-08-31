@@ -18,7 +18,7 @@
             <div class="panel-body" style="overflow: hidden;">
 
                 @* <div id="my_camera" ></div> *@
-                <video autoplay id="my_camera" class="videoInsert"></video> 
+                <video autoplay id="my_camera" class="videoInsert rounded"></video> 
 
                 <!-- Saving image to hidden field -->
                 <input type="hidden" id="image_uri" name="ImageUri" />
@@ -27,12 +27,12 @@
                 <!-- A button for taking snaps -->
                 <form>
                     <input type="button" class="btn btn-success" value="Ta Bilde"  onClick="take_snapshot()">
-                    <input id="new" type="button" class="btn btn-success" value="Ta Om Igjen" onClick="reset_image()" style="visibility: hidden;">
+                    <input id="new" type="button" class="btn btn-success" value="Ta Nytt" onClick="reset_image()" style="visibility: hidden;">
                 </form>
             </div>
         </div>
     </div>
-
+</div>
 
 <!-- VALUE INFO -->
 <div class="d-flex justify-content-center col">
@@ -62,8 +62,18 @@
             <div>
                 <div class="cnt">
                     Annonse Type
-                    <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "false") <label>Funnet</label></div>
-                    <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div>
+                    <br>
+                    <!-- FORSLAG -->
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-success checked active @(Model.TypeAnnonse ? "active":"")">
+                            <input type="radio" name="options" id="option1" autocomplete="off"> Funnet
+                        </label>
+                        <label class="btn btn-danger @(Model.TypeAnnonse ? "active" :"")">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Savnet
+                        </label>
+                    </div>
+                    @* <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "false") <label>Funnet</label></div>
+                    <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div> *@
                 </div>
             </div>
 
@@ -94,7 +104,7 @@
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
-        <input type="button" value="Click to Display Map" onclick="DisplayGoogleMap()" />  
+        <input type="button" class="btn btn-primary btn-sm" value="Click to Display Map" onclick="DisplayGoogleMap()" />  
 
         <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
          <div id="map" style="width:100%;height:400px;"></div>  
@@ -104,41 +114,6 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@* 
-<!-- First, include the Webcam.js JavaScript Library -->
-<script src="~/webcamjs/webcam.js"></script>
-<!-- Configure a few settings and attach camera -->
-<script language="JavaScript">
-    Webcam.set({
-        width: 320,
-        height: 240,
-        image_format: 'jpeg',
-        jpeg_quality: 90,
-        flip_horiz: true
-    });
-    Webcam.attach('#my_camera');
-</script>
-
-<!-- Code to handle taking the snapshot and displaying it locally -->
-<script language="JavaScript">
-
-    function take_snapshot() {
-        // take snapshot and get image data
-        Webcam.snap(function (data_uri) {
-
-
-            document.getElementById('new').style.visibility = "visible";
-            document.getElementById('Image').value = data_uri;
-        });
-        Webcam.freeze();
-    }
-
-    function reset_image() {
-
-        Webcam.unfreeze();
-
-    } *@
 
 <!-- First, include the Webcam.js JavaScript Library -->
 <script src="~/webcamjs/camera.js"></script>
@@ -187,8 +162,8 @@
 </script>
 
 <!-- Google maps -->
-<script src="~/googleMaps/googleMaps2.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRFFoSKFICLoH-f--RW2EHqA2OzwVLE4"></script> 
+<script src="~/googleMaps/googleMaps.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRFFoSKFICLoH-f--RW2EHqA2OzwVLE4&libraries=places"></script> 
 
 <script type="text/javascript">  
     function DisplayGoogleMap()
