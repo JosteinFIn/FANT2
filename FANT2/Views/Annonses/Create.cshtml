@@ -13,29 +13,32 @@
 <!-- CAMERA -->
 
 <br />
-<div class="col-md-2"></div>
-<div id="Picture" class="d-flex justify-content-center">
-        <div class="panel-body" style="overflow: hidden;">
+<div class="col d-flex justify-content-center">
+    <div id="Picture">
+            <div class="panel-body" style="overflow: hidden;">
 
-            @* <div id="my_camera" ></div> *@
-            <video autoplay id="my_camera" class="videoInsert"></video> 
+                @* <div id="my_camera" ></div> *@
+                <video autoplay id="my_camera" class="videoInsert"></video> 
 
-            <!-- Saving image to hidden field -->
-            <input type="hidden" id="image_uri" name="ImageUri" />
+                <!-- Saving image to hidden field -->
+                <input type="hidden" id="image_uri" name="ImageUri" />
 
 
-            <!-- A button for taking snaps -->
-            <form>
-                <input type="button" class="btn btn-success" value="Ta Bilde"  onClick="take_snapshot()">
-                <input id="new" type="button" class="btn btn-success" value="Ta Om Igjen" onClick="reset_image()" style="visibility: hidden;">
-            </form>
+                <!-- A button for taking snaps -->
+                <form>
+                    <input type="button" class="btn btn-success" value="Ta Bilde"  onClick="take_snapshot()">
+                    <input id="new" type="button" class="btn btn-success" value="Ta Om Igjen" onClick="reset_image()" style="visibility: hidden;">
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- VALUE INFO -->
-<div class="alert alert-danger col-md-4" role="alert" id="ValueInfo" style="display: none; height:250px">
-    <h4>Verdifulle funnede gjenstander må identifiseres av eier ved beskrivende svar på annonse før utlevering, og vil defor pubiseres uten bilde.</h4>
+<div class="d-flex justify-content-center col">
+    <div class="alert alert-danger col" role="alert" id="ValueInfo" style="height:250px; display: none;" >
+        <h4>Verdifulle funnede gjenstander må identifiseres av eier ved beskrivende svar på annonse før utlevering, og vil defor pubiseres uten bilde.</h4>
+    </div>
 </div>
 
 <div class="col-md-2">    </div>
@@ -46,7 +49,7 @@
 <partial name="/Views/Camera/Capture.cshtml" /> *@
 
 <div class="row">
-    <div class="col-md-2 px-5">
+    <div class="col px-5">
         <form asp-action="Create">
             <input asp-for="Image" type="hidden" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
