@@ -25,9 +25,25 @@ namespace FANT2.Controllers
         }
 
         // GET: Annonses
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string annonseCategory, string searchString)
         {
-            return View(await _context.Annonse.ToListAsync());
+	        IQueryable<Category> categoryQuery = from m in _context.Annonse
+		        select m.Category;
+
+	        var annonse = from m in _context.Annonse
+		        select m;
+	        if (!string.IsNullOrEmpty(annonseCategory))
+	        {
+		        annonse = annonse.Where(x => x.Category.Name == annonseCategory);
+	        }
+
+	        var annonseCategoryVM = new AnnonseCategoryModel()
+	        {
+		        Categorys = new SelectList(await categoryQuery.Distinct().ToListAsync()),
+		        Annonses = await annonse.ToListAsync()
+	        };
+
+	        return View(annonseCategoryVM);
         }
 
         // GET: Annonses/Details/5
