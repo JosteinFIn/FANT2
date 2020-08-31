@@ -6,11 +6,23 @@
     <title>@ViewData["Title"] - FANT2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href='@Url.Content("~/css/mystyle.css")' />
-   
- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
+<header>
+    <div class="navbar fixed-bottom bg-white">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LandingPage"><i class="fa fa-fw fa-home"></i> Hjem</a>
+        <a  class="nav-link text-dark" asp-area="" asp-controller="Annonses" asp-action="Create"><i class="fa fa-plus-square"></i> Opprett Annonse</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Annonses" asp-action="Index"> <img src="/img/Logo.PNG" alt="Logo" width="40" height="40"> Annonser</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Annonses" asp-action="Index"><i class="fa fa-map-marker"></i> Kart</a>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index"><i class="fa fa-fw fa-user"></i> Profil</a>
+        </div>
    
+</header>
+    
+
 
 <div class="container">
         <main role="main" class="pb-3">
