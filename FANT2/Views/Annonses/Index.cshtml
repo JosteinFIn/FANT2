@@ -14,10 +14,11 @@
 
 <form asp-controller="Annonses" asp-action="Index" method="get">
     <p>
+    
         <select asp-for="AnnonseCategory" asp-items="Model.Categorys">
             <option value="">All</option>
-            </select>
-        
+        </select>
+
         Tittel: <input type="text" asp-for="SearchString"/>
         <input type="submit" value="Filter"/>
     </p>

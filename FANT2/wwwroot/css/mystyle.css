@@ -29,9 +29,10 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #f0d017;
+    border-style: solid;
+    border-radius: 30px;
 }
 
 /* Sticky footer styles
@@ -84,9 +85,17 @@ body {
 /* Menu styles
 -------------------------------------------------- */
 
-.nav-item .nav-link{
+.nav-item .nav-link {
     font-size: 0.7rem;
     font-weight: bold;
+    background-color: #f0d017;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-item {
+    font-size: 40px;
 }
 
 
@@ -108,6 +117,17 @@ body {
     justify-content: center;
 }
 ----------------------------------------
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    position: relative;
+    color: black;
+    padding-top: 20px;
+    font-weight: bold;
+}
+
 h2 {
     display: flex;
     align-items: center;
@@ -118,11 +138,11 @@ h2 {
     padding-top: 20px;
     font-weight: bold;
 }
-p {
+.p-start{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: grey;
     font-weight: bold;
 }
 
@@ -142,4 +162,41 @@ p {
 .img-start {
     padding: 15px;
     border-radius: 40px;
+}
+
+.label {
+    color: black;
+    border-color: black;
+    display: flex;
+    padding: 10px 30px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center
+}
+
+.form-control {
+    color: black;
+    border-color: black;
+    display: flex;
+    padding: 10px 30px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#input {
+    background-color: white;
+}
+
+hr {
+    background-color: white;
+    font-weight: bold;
 }
