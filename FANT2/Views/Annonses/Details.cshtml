@@ -3,15 +3,17 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/nb_NO/sdk.js#xfbml=1&version=v8.0&appId=233524327907536&autoLogAppEvents=1" nonce="IwBrLqt5"></script>
 <div class="text-center">
-@if (Model.TypeAnnonse == true)
-{
-    <h1>SAVNET</h1>
-}
-else
-{
-    <h1>FUNNET</h1>
-}
+    @if (Model.TypeAnnonse == true)
+    {
+        <h1>SAVNET</h1>
+    }
+    else
+    {
+        <h1>FUNNET</h1>
+    }
 </div>
 
 <div>
@@ -23,29 +25,31 @@ else
 
 
 
-    <dl>
-        <h4>
-            @Html.DisplayFor(model => model.Title)
-        </h4>
+<dl>
+    <h4>
+        @Html.DisplayFor(model => model.Title)
+    </h4>
 
-       
-            <dd >
-                DATO:  @Html.DisplayFor(model => model.Date)
-            </dd>
 
-        <br />
-        <p>Beskrivelse</p>
-        
-        <p>
-            @Html.DisplayFor(model => model.Description)
-        </p>
+    <dd>
+        DATO:  @Html.DisplayFor(model => model.Date)
+    </dd>
 
-        
-       
-    </dl>
+    <br />
+    <p>Beskrivelse</p>
+
+    <p>
+        @Html.DisplayFor(model => model.Description)
+    </p>
+
+    <div class="fb-share-button" data-href="https://fant.azurewebsites.net/Annonses/&#123;id?]" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffant.azurewebsites.net%2FAnnonses%2F%257Bid%3F%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Del</a></div>
+
+
+</dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>|
     <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 </div>
+

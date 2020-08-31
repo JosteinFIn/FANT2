@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FANT2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FANT2.Controllers
 {
@@ -18,6 +19,27 @@ namespace FANT2.Controllers
 			_logger = logger;
 		}
 
+        public IActionResult OnBoarding()
+        {
+            return View();
+        }
+        public IActionResult OnBoarding1()
+        {
+            return View();
+        }
+
+        public IActionResult OnBoarding2()
+        {
+            return View();
+        }
+
+		[Authorize]
+        public IActionResult LandingPage()
+        {
+            return View();
+        }
+
+
 		public IActionResult Index()
 		{
 			return View();
@@ -27,6 +49,11 @@ namespace FANT2.Controllers
 		{
 			return View();
 		}
+
+        public IActionResult Start()
+        {
+            return View();
+        }
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
