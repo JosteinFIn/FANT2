@@ -32,9 +32,9 @@ namespace FANT2.Controllers
 
 	        var annonse = from m in _context.Annonse
 		        select m;
-	        if (!string.IsNullOrEmpty(annonseCategory))
+	        if (!string.IsNullOrEmpty(searchString))
 	        {
-		        annonse = annonse.Where(x => x.Category.Name == annonseCategory);
+		        annonse = annonse.Where(x => x.Title.Contains(searchString));
 	        }
 
 	        var annonseCategoryVM = new AnnonseCategoryModel()
