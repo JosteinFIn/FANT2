@@ -30,7 +30,7 @@ namespace FANT2
 		{
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
-					Configuration.GetConnectionString("MyDBConnection")));
+					Configuration.GetConnectionString("MyDbConnection")));
 
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
@@ -76,7 +76,7 @@ namespace FANT2
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Annonses}/{action=Index}/{id?}");
+					pattern: "{controller=Home}/{action=OnBoarding}/{id?}");
 				endpoints.MapRazorPages();
 			});
 		}
