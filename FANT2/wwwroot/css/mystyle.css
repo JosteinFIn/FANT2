@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 body {
     background-color: #F0D017;
+    font-family: 'Poppins', sans-serif;
 }
 a.navbar-brand {
   white-space: normal;
@@ -12,7 +13,7 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: white;
 }
 
 .btn-primary {
@@ -106,18 +107,39 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+----------------------------------------
 h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    font-size: large;
     position: relative;
-    color: white;
+    color: black;
     padding-top: 20px;
+    font-weight: bold;
 }
 p {
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.card {
+    border-radius: 20px;
+}
+
+.fa{
+    color: #f0d017
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-start {
+    padding: 15px;
+    border-radius: 40px;
 }
