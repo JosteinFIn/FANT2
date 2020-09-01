@@ -4,10 +4,14 @@
     ViewData["Title"] = "Details";
 }
 <div id="fb-root"></div>
+<a style="color: black; float: left" asp-action="Index"><i class="fa fa-arrow-left" style="color: black; font-size: large; margin-top: 20px; margin-left: 20px;"></i><br /> </a>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/nb_NO/sdk.js#xfbml=1&version=v8.0&appId=233524327907536&autoLogAppEvents=1" nonce="IwBrLqt5"></script>
 <div class="text-center">
+
+    
     @if (Model.TypeAnnonse == true)
     {
+
         <h1>SAVNET</h1>
     }
     else
@@ -50,8 +54,7 @@
     </dl>
 </div>
 
-<a class="text-center" style="color: black" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | 
-<a class="text-center" style="color: black;" asp-action="Index">Back to List</a>|
-<a class="text-center" style="color: black" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+<a class="text-center" style="color: black;  margin-bottom: 20px;" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+<a class="text-center" style="color: black; margin-bottom: 20px;" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 
 

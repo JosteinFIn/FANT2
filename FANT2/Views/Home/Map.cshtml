@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Map";
+}
+
+<br/>
+<br/>
+<input type="button" value="Se kart" onclick="DisplayGoogleMap()" />
+<br />
+<br/>
+<div id="mapContainer" style="display: none">
+    <input id="pac-input" class="controls" type="text" placeholder="Søk på sted" />
+    <br/>
+    <br/>
+    <div id="map" style="width:100%;height:600px; border-radius: 10px;"></div>  
+    <br />
+</div>
+
+<script src="~/googleMaps/googleMaps.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRFFoSKFICLoH-f--RW2EHqA2OzwVLE4&libraries=places"></script>
+
+<script type="text/javascript">
+    function DisplayGoogleMap();
+
+</script>
