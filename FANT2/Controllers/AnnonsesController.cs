@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using System.Drawing;
 
 namespace FANT2.Controllers
 {
@@ -102,11 +103,28 @@ namespace FANT2.Controllers
                 
 	            var user = await _userManager.GetUserAsync(User);
 
+                //GET IMAGE
                 var base64string = annonse.Image.Substring(annonse.Image.LastIndexOf(',') + 1);
                 var base64array = Convert.FromBase64String(base64string);
-                var filePath = Path.Combine($"{Environment.CurrentDirectory}/wwwroot/img/annonse/{Guid.NewGuid()}.jpg");
+                var relPath = "/img/annonse/" + Guid.NewGuid().ToString() + ".jpg";
+                var filePath = _webHostEnvironment.WebRootPath + relPath;
+
+
+                //RESIZE
+                using (MemoryStream memStream = new MemoryStream(base64array))
+                {
+                    MemoryStream myMemStream = new MemoryStream(base64array);
+                    Image fullsizeImage = Image.FromStream(myMemStream);
+                    if (fullsizeImage.Width > 500)
+                    {
+                        var scaleRatio = (500.0 / fullsizeImage.Width);
+                        Image newImage = fullsizeImage.GetThumbnailImage((int)(fullsizeImage.Width * scaleRatio), (int)(fullsizeImage.Height * scaleRatio), null, IntPtr.Zero);
+                        MemoryStream myResult = new MemoryStream();
+                        newImage.Save(myResult, System.Drawing.Imaging.ImageFormat.Jpeg);  //Or whatever format you want.
+                        base64array = myResult.ToArray();  //Returns a new byte array.
+                    }
+                }
                 System.IO.File.WriteAllBytes(filePath, base64array);
-                var fileString = "~" + filePath.Substring(filePath.LastIndexOf("root/") + 4);
 
                 var model = new Annonse
                 {
@@ -117,7 +135,7 @@ namespace FANT2.Controllers
                     IsValuable = annonse.IsValuable,
                     TypeAnnonse = annonse.TypeAnnonse,
                     Date = annonse.Date,
-                    Image = fileString,
+                    Image = relPath,
                 };
 
                 if (model.IsValuable)
@@ -207,6 +225,24 @@ namespace FANT2.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var annonse = await _context.Annonse.FindAsync(id);
+
+            var filePath = _webHostEnvironment.WebRootPath + annonse.Image;
+            try
+            {
+                // Check if file exists with its full path    
+                if (System.IO.File.Exists(filePath))
+                {
+                    // If file found, delete it    
+                    System.IO.File.Delete(filePath);
+                    Console.WriteLine("File deleted.");
+                }
+                else Console.WriteLine("File not found");
+            }
+            catch (IOException ioExp)
+            {
+                Console.WriteLine(ioExp.Message);
+            }
+
             _context.Annonse.Remove(annonse);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
