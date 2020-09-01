@@ -20,36 +20,38 @@
     <hr />
     @if (Model.Image != null)
     {
-        <img class="rounded mx-auto d-block" alt="..." style="width: 100%" src=@Html.DisplayFor(model => model.Image) />
+        <img class="rounded mx-auto d-block" alt="..." style="width: 100%; border-radius: 20px;" src=@Html.DisplayFor(model => model.Image) />
     }
 
 
 
-<dl>
-    <h4>
-        @Html.DisplayFor(model => model.Title)
-    </h4>
+    <dl class="text-center">
+        <br />
+        <br />
+        <h4 style="color: white">
+            @Html.DisplayFor(model => model.Title)
+        </h4>
+
+        <br/>
+        <dd>
+            DATO: @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <br/>
+        <p style="font-weight: bold">Beskrivelse</p>
+
+        <p>
+            @Html.DisplayFor(model => model.Description)
+        </p>
+
+        <div class="fb-share-button" data-href="https://fant.azurewebsites.net/Annonses/&#123;id?]" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffant.azurewebsites.net%2FAnnonses%2F%257Bid%3F%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Del</a></div>
 
 
-    <dd>
-        DATO:  @Html.DisplayFor(model => model.Date)
-    </dd>
-
-    <br />
-    <p>Beskrivelse</p>
-
-    <p>
-        @Html.DisplayFor(model => model.Description)
-    </p>
-
-    <div class="fb-share-button" data-href="https://fant.azurewebsites.net/Annonses/&#123;id?]" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffant.azurewebsites.net%2FAnnonses%2F%257Bid%3F%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Del</a></div>
-
-
-</dl>
+    </dl>
 </div>
 
-<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | 
-<a asp-action="Index">Back to List</a>|
-<a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+<a class="text-center" style="color: black" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | 
+<a class="text-center" style="color: black;" asp-action="Index">Back to List</a>|
+<a class="text-center" style="color: black" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 
 

@@ -329,3 +329,9 @@ form-create {
     background-color: white;
     display: grid;
 }
+
+.btn-primary::after {
+    color: #9555af;
+    border-color: currentColor;
+    background-color: white;
+} 
