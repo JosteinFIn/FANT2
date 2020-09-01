@@ -10,6 +10,8 @@ using FANT2.Models;
 using FANT2.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace FANT2.Controllers
 {
@@ -17,11 +19,13 @@ namespace FANT2.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AnnonsesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public AnnonsesController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Annonses
@@ -95,7 +99,15 @@ namespace FANT2.Controllers
         {
             if (ModelState.IsValid)
             {
+                
 	            var user = await _userManager.GetUserAsync(User);
+
+                var base64string = annonse.Image.Substring(annonse.Image.LastIndexOf(',') + 1);
+                var base64array = Convert.FromBase64String(base64string);
+                var filePath = Path.Combine($"{Environment.CurrentDirectory}/wwwroot/img/annonse/{Guid.NewGuid()}.jpg");
+                System.IO.File.WriteAllBytes(filePath, base64array);
+                var fileString = "~" + filePath.Substring(filePath.LastIndexOf("root/") + 4);
+
                 var model = new Annonse
                 {
                     UserId = user.Id,
@@ -105,7 +117,7 @@ namespace FANT2.Controllers
                     IsValuable = annonse.IsValuable,
                     TypeAnnonse = annonse.TypeAnnonse,
                     Date = annonse.Date,
-                    Image = annonse.Image,
+                    Image = fileString,
                 };
 
                 if (model.IsValuable)

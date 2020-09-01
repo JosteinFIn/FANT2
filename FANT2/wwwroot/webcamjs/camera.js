@@ -6,6 +6,9 @@ if (
 var imageCapture;
 const video = document.querySelector("#my_camera");
 
+
+
+
 var Camera = {
     
     
@@ -63,23 +66,10 @@ var Camera = {
             reader.readAsDataURL(blob); 
             reader.onloadend = function() {
               var base64data = reader.result;                
-             
-              var canvas = document.createElement('canvas'),
-                ctx = canvas.getContext('2d');
-
-              // set its dimension to target size
-              canvas.width = 500;
-              canvas.height = 500;
-
-              // draw source image into the off-screen canvas:
-              ctx.drawImage(base64data, 0, 0, 500, 500);
-              var downScale = canvas.toDataURL(img);
-              console.log(downScale);
-              document.getElementById('Image').value = downScale;
+            
+              document.getElementById('Image').value = base64data;
               }
-            // img.classList.remove('hidden');
-            // img.src = URL.createObjectURL(blob);
-          }).catch(function(error) {
+           
             console.log('takePhoto() error: ', error);
           });
         // }
