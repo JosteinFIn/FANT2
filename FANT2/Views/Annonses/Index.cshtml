@@ -61,7 +61,7 @@
                     type = "Funnet";
                 }
             
-                <div class="card" style="width: 18rem; overflow: hidden; background-color: @colors">
+                <div class="card" style="width: 18rem; border-color: black; overflow: hidden; background-color: @colors">
 
                     @if(item.Image != null)
                     {
@@ -69,10 +69,10 @@
                     }
 
                     <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.Title)</h5>
 
-                        <h6 class="card-subtitle mb-2 text-muted">@type</h6>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <h6 class="card-subtitle mb-2 text-center"  style="color: black;">@type</h6>
+                        <p class="card-text text-center"  style="color: white;">@Html.DisplayFor(modelItem => item.Description)</p>
                         <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Se mer</a>
                     </div>
                 </div>
