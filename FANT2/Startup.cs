@@ -90,7 +90,7 @@ namespace FANT2
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Home}/{action=OnBoarding}/{id?}");
+					pattern: "{controller=Home}/{action=Intro}/{id?}");
 				endpoints.MapRazorPages();
 			});
 		}

@@ -15,6 +15,8 @@ namespace FANT2.Data
 		}
 		public DbSet<Annonse> Annonse { get; set; }
 
+		public DbSet<Message> Melding { get; set; }
+
 		public DbSet<Category> Category { get; set; }
 
 		//protected override void OnModelCreating(ModelBuilder builder)
