@@ -10,7 +10,7 @@ function DisplayGoogleMap() {
     var mapOptions = {  
         center: myAddress,  
         zoom: 15,  
-        // minZoom: 30,  
+        minZoom: 30,  
         mapTypeId: google.maps.MapTypeId.ROADMAP  
     }; 
 
