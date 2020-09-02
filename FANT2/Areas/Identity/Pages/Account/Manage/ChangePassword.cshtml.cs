@@ -35,18 +35,18 @@ namespace FANT2.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Current password")]
+            [Display(Name = "Nåværende passord")]
             public string OldPassword { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0} må inneholde minst {2} og maksimalt {1} tegn.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "New password")]
+            [Display(Name = "nytt passord")]
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+            [Display(Name = "Bekrefte nytt passord")]
+            [Compare("NewPassword", ErrorMessage = "Det nye passordet og bekreftelsespassordet samsvarer ikke")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -92,7 +92,7 @@ namespace FANT2.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            StatusMessage = "Ditt passord har blitt endret.";
 
             return RedirectToPage();
         }
