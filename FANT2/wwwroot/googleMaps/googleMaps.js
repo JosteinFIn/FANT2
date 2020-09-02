@@ -4,15 +4,17 @@ function DisplayGoogleMap() {
     mapElement.style.display = "block";
     //Set the Latitude and Longitude of the Map  
     var myAddress = new google.maps.LatLng(59.9139, 10.7522);  
+    
 
     //Create Options or set different Characteristics of Google Map  
     var mapOptions = {  
         center: myAddress,  
         zoom: 15,  
-        minZoom: 30,  
+        // minZoom: 30,  
         mapTypeId: google.maps.MapTypeId.ROADMAP  
-    };  
+    }; 
 
+    var marker = new google.maps.Marker();
     //Display the Google map in the div control with the defined Options  
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);  
 
@@ -27,14 +29,36 @@ function DisplayGoogleMap() {
     //---------------
 
     // Create the search box and link it to the UI element.
-  const input = document.getElementById("pac-input");
-  const searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  // Bias the SearchBox results towards current map's viewport.
-  map.addListener("bounds_changed", () => {
-    searchBox.setBounds(map.getBounds());
-  });
-  let markers = [];
+    const input = document.getElementById("pac-input");
+    const searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener("bounds_changed", () => {
+      searchBox.setBounds(map.getBounds());
+    });
+
+    function addMarker(location, map) {
+    // Add the marker at the clicked location, and add the next-available label
+    // from the array of alphabetical characters.
+      marker = new google.maps.Marker({
+        position: location,
+        // label: labels[labelIndex++ % labels.length],
+        title: google.maps.getPlaces,
+        map: map
+      });
+    }
+
+    google.maps.event.addListener(map, 'click', function(event) {
+      marker.setMap(null);
+      addMarker(event.latLng, map);
+      
+      // console.log(event.latLng.toString());
+      document.getElementById("Location").value = event.latLng.toString();
+    });
+    
+
+
+  // let markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener("places_changed", () => {
@@ -43,11 +67,13 @@ function DisplayGoogleMap() {
     if (places.length == 0) {
       return;
     }
+    /*
     // Clear out the old markers.
     markers.forEach(marker => {
       marker.setMap(null);
     });
     markers = [];
+    */
     // For each place, get the icon, name and location.
     const bounds = new google.maps.LatLngBounds();
     places.forEach(place => {
@@ -62,15 +88,24 @@ function DisplayGoogleMap() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+
+      marker.setMap(null);
+      addMarker(place.geometry.location, map);
+
+      // document.getElementById("lonlat").value = marker.location;
+
+
+      // console.log(marker);
+      /*
       // Create a marker for each place.
       markers.push(
         new google.maps.Marker({
           map,
-          icon,
+          // icon,
           title: place.name,
           position: place.geometry.location
         })
-      );
+      );*/
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.

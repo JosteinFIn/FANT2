@@ -52,6 +52,7 @@
     <div class="col px-5">
         <form asp-action="Create">
             <input asp-for="Image" type="hidden" />
+            <input asp-for="Location" type="hidden" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group-katogori">
                 <p class=" class-label">Kategori</p>
@@ -73,7 +74,7 @@
                         </label>
                     </div>
                     @* <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "false") <label>Funnet</label></div>
-                    <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div> *@
+                <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div> *@
                 </div>
             </div>
 
@@ -87,7 +88,7 @@
             <div class="form-group">
                 <br />
                 <label asp-for="Title" class="control-label">Tittel</label>
-                <input asp-for="Title" class="form-control"/>
+                <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -103,10 +104,10 @@
             <br />
             <div id="mapContainer" style="display: none">
                 <input id="pac-input" class="controls" type="text" placeholder="Søk på sted" />
-                <div id="map" style="width:100%;height:400px;"></div>  
-                <br/>
+                <div id="map" style="width:100%;height:400px;"></div>
+                <br />
             </div>
-            <input type="button" value="Se kart" onclick="DisplayGoogleMap()" /> 
+            <input type="button" value="Se kart" onclick="DisplayGoogleMap()" />
             <br />
             <div class="form-group">
                 <input type="submit" value="Opprett annonse" class="btn btn-primary-create" />
