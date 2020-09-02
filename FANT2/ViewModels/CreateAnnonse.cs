@@ -22,5 +22,7 @@ namespace FANT2.ViewModels
 		public DateTime Date { get; set; } = DateTime.Today;
 		public string Image { get; set; }
 
+
+
 	}
 }

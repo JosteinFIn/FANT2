@@ -26,9 +26,7 @@ namespace FANT2.Controllers
 	        _userManager = userManager;
         }
 
-     
-
-
+        
       
         // POST: api/MessagesApi
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
