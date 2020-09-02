@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Details";
 }
+<br/>
+<br/>
 <div id="fb-root"></div>
 <a style="color: black; float: left" asp-action="Index"><i class="fa fa-arrow-left" style="color: black; font-size: large; margin-top: 20px; margin-left: 20px;"></i><br /> </a>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/nb_NO/sdk.js#xfbml=1&version=v8.0&appId=233524327907536&autoLogAppEvents=1" nonce="IwBrLqt5"></script>
@@ -30,51 +32,51 @@
 
 
     <dl>
-        <h4>
-            @Html.DisplayFor(model => model.annonse.Title)
-        </h4>
-
-
-        <dd>
-            DATO:  @Html.DisplayFor(model => model.annonse.Date)
-        </dd>
-
         <br />
-        <p>Beskrivelse</p>
+        <br />
+    <h4 class="text-center" style="font-weight: bolder">
+         @Html.DisplayFor(model => model.annonse.Title)
+    </h4>
+        
+    <p style="font-weight: bold">Dato</p>
+    <dd >
+        @Html.DisplayFor(model => model.annonse.Date)
+    </dd>
+        <br />
+    <p style="font-weight: bold">Beskrivelse</p>
 
-        <p>
-            @Html.DisplayFor(model => model.annonse.Description)
-        </p>
-
+    <p>
+        @Html.DisplayFor(model => model.annonse.Description)
+    </p>
         @if (Model.loggedIn == true)
-        {
-            <p>Kontaktinformasjon:</p>
-            <p>@Html.DisplayFor(model => model.userEmail)</p>
-        }
+    {
+        <p style="font-weight: bold">Kontaktinformasjon</p>
+        <p>@Html.DisplayFor(model => model.userEmail)</p>
+    }
 
-        @*
-            <div class="form-group">
-                <textarea id="message" rows="3"></textarea>
-                <button id="send-message" class="btn btn-primary-create">Send melding</button>
-            </div>*@
+    @*
+        <div class="form-group">
+            <textarea id="message" rows="3"></textarea>
+            <button id="send-message" class="btn btn-primary-create">Send melding</button>
+        </div>*@
 
-        <div class="fb-share-button" data-href="https://fant.azurewebsites.net/Annonses/&#123;id?]" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffant.azurewebsites.net%2FAnnonses%2F%257Bid%3F%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Del</a></div>
+    <div class="fb-share-button" data-href="https://fant.azurewebsites.net/Annonses/&#123;id?]" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffant.azurewebsites.net%2FAnnonses%2F%257Bid%3F%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Del</a></div>
 
 
-    </dl>
+</dl>
 </div>
 
 
 
 
-<a asp-action="Edit" asp-route-id="@Model.annonse.Id">Edit</a> |
-<a asp-action="Index">Back to List</a>|
+<a asp-action="Edit" asp-route-id="@Model.annonse.Id">Endre</a> |
+
 
 @if (Model.annonse.UserId == Model.userId)
 {
-    <a asp-action="Delete" asp-route-id="@Model.annonse.Id">Delete</a>
+    <a asp-action="Delete" asp-route-id="@Model.annonse.Id">Slett</a>
 }
-e
+
 
 
 
