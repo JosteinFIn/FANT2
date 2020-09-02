@@ -334,4 +334,9 @@ form-create {
     color: #9555af;
     border-color: currentColor;
     background-color: white;
-} 
+}
+.fa-arrow-left {
+    font-weight: bold;
+    font-size: large;
+}
+

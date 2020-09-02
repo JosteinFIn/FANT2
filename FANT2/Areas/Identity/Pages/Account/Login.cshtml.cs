@@ -71,7 +71,7 @@ namespace FANT2.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = "/annonses/create")
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
@@ -83,7 +83,7 @@ namespace FANT2.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return LocalRedirect("/annonses/index");
                 }
                 if (result.RequiresTwoFactor)
                 {
