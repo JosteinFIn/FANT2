@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FANT2.Controllers
 {
@@ -59,6 +60,8 @@ namespace FANT2.Controllers
         // GET: Annonses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+	        
+
             if (id == null)
             {
                 return NotFound();
@@ -66,12 +69,19 @@ namespace FANT2.Controllers
 
             var annonse = await _context.Annonse
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == annonse.UserId);
             if (annonse == null)
             {
                 return NotFound();
             }
 
-            return View(annonse);
+            var result = new UserAnnonse
+            {
+	            annonse = annonse,
+	            userEmail = user.Email,
+                loggedIn = User.Identity.IsAuthenticated
+            };
+            return View(result);
         }
 
         // GET: Annonses/Create
