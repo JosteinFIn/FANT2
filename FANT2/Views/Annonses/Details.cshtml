@@ -69,12 +69,12 @@
 
 
 
-<a asp-action="Edit" asp-route-id="@Model.annonse.Id">Endre</a> |
+<a class="btn btn-info" style="color: white; margin-left: 15px;" asp-action="Edit" asp-route-id="@Model.annonse.Id">Endre</a> 
 
 
 @if (Model.annonse.UserId == Model.userId)
 {
-    <a asp-action="Delete" asp-route-id="@Model.annonse.Id">Slett</a>
+    <a class="btn btn-danger" style="color: white; margin-left: 10px;" asp-action="Delete" asp-route-id="@Model.annonse.Id"> Slett</a>
 }
 
 
