@@ -122,30 +122,31 @@ namespace FANT2.Controllers
                 
 	            var user = await _userManager.GetUserAsync(User);
 
-                //GET IMAGE
-                var base64string = annonse.Image.Substring(annonse.Image.LastIndexOf(',') + 1);
-                var base64array = Convert.FromBase64String(base64string);
-                var relPath = "/img/annonse/" + Guid.NewGuid().ToString() + ".jpg";
-                var filePath = _webHostEnvironment.WebRootPath + relPath;
+				//GET IMAGE
+				var base64string = annonse.Image.Substring(annonse.Image.LastIndexOf(',') + 1);
+				var base64array = Convert.FromBase64String(base64string);
+				var relPath = "/img/annonse/" + Guid.NewGuid().ToString() + ".jpg";
+				var filePath = _webHostEnvironment.WebRootPath + relPath;
 
 
-                //RESIZE
-                using (MemoryStream memStream = new MemoryStream(base64array))
-                {
-                    MemoryStream myMemStream = new MemoryStream(base64array);
-                    Image fullsizeImage = Image.FromStream(myMemStream);
-                    if (fullsizeImage.Width > 500)
-                    {
-                        var scaleRatio = (500.0 / fullsizeImage.Width);
-                        Image newImage = fullsizeImage.GetThumbnailImage((int)(fullsizeImage.Width * scaleRatio), (int)(fullsizeImage.Height * scaleRatio), null, IntPtr.Zero);
-                        MemoryStream myResult = new MemoryStream();
-                        newImage.Save(myResult, System.Drawing.Imaging.ImageFormat.Jpeg);  //Or whatever format you want.
-                        base64array = myResult.ToArray();  //Returns a new byte array.
-                    }
-                }
-                System.IO.File.WriteAllBytes(filePath, base64array);
+				//RESIZE
+				using (MemoryStream memStream = new MemoryStream(base64array))
+				{
+					MemoryStream myMemStream = new MemoryStream(base64array);
+					Image fullsizeImage = Image.FromStream(myMemStream);
+					if (fullsizeImage.Width > 500)
+					{
+						var scaleRatio = (500.0 / fullsizeImage.Width);
+						Image newImage = fullsizeImage.GetThumbnailImage((int)(fullsizeImage.Width * scaleRatio), (int)(fullsizeImage.Height * scaleRatio), null, IntPtr.Zero);
+						MemoryStream myResult = new MemoryStream();
+						newImage.Save(myResult, System.Drawing.Imaging.ImageFormat.Jpeg);  //Or whatever format you want.
+						base64array = myResult.ToArray();  //Returns a new byte array.
+					}
+				}
 
-                var model = new Annonse
+				System.IO.File.WriteAllBytes(filePath, base64array);
+
+				var model = new Annonse
                 {
                     UserId = user.Id,
                     CategoryId = annonse.CategoryId,
@@ -154,7 +155,8 @@ namespace FANT2.Controllers
                     IsValuable = annonse.IsValuable,
                     TypeAnnonse = annonse.TypeAnnonse,
                     Date = annonse.Date,
-                    Image = relPath,
+                    Image = annonse.Image,
+                    Location = annonse.Location
                 };
 
                 if (model.IsValuable)
