@@ -344,3 +344,6 @@ form-create {
     color: black;
 }
 
+.logoutForm {
+    display: -webkit-inline-box;
+}
