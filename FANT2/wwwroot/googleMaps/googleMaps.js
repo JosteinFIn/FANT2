@@ -55,7 +55,11 @@ function DisplayGoogleMap() {
         console.log(event.latLng);
         console.log(event.latLng.lat())
         console.log(event.latLng.lng())
-      document.getElementById("Location").value = event.latLng.toString();
+      // document.getElementById("Location").value = event.latLng.toString();
+      document.getElementById("Lat").value = event.latLng.lat().toString();
+      document.getElementById("Lng").value = event.latLng.lng().toString();
+
+
       // event.latLng.lat()
       // event.latLng.lng()
     });

@@ -52,7 +52,9 @@
     <div class="col px-5">
         <form asp-action="Create">
             <input asp-for="Image" type="hidden" />
-            <input asp-for="Location" type="hidden" />
+            <input asp-for="Lat" type="hidden" />
+            <input asp-for="Lng" type="hidden" />
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group-katogori">
                 <p class=" class-label">Kategori</p>
