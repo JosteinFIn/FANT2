@@ -12,6 +12,8 @@ namespace FANT2.ViewModels
 		public Annonse annonse {get; set; }
 		public string userEmail { get; set; }
 
+		public string userId { get; set; }
+		
 		public bool loggedIn { get; set; }
 	}
 }

@@ -29,39 +29,39 @@
 
 
 
-<dl>
-    <h4>
-        @Html.DisplayFor(model => model.annonse.Title)
-    </h4>
+    <dl>
+        <h4>
+            @Html.DisplayFor(model => model.annonse.Title)
+        </h4>
 
 
-    <dd>
-        DATO:  @Html.DisplayFor(model => model.annonse.Date)
-    </dd>
+        <dd>
+            DATO:  @Html.DisplayFor(model => model.annonse.Date)
+        </dd>
 
-    <br />
-    <p>Beskrivelse</p>
+        <br />
+        <p>Beskrivelse</p>
 
-    <p>
-        @Html.DisplayFor(model => model.annonse.Description)
-    </p>
-    
-    @if (Model.loggedIn==true)
-    {
-        <h4>Kontaktinformasjon:</h4>
-        <p>@Html.DisplayFor(model=>model.userEmail)</p>
-    }
+        <p>
+            @Html.DisplayFor(model => model.annonse.Description)
+        </p>
 
-    @*
-        <div class="form-group">
-            <textarea id="message" rows="3"></textarea>
-            <button id="send-message" class="btn btn-primary-create">Send melding</button>
-        </div>*@
+        @if (Model.loggedIn == true)
+        {
+            <p>Kontaktinformasjon:</p>
+            <p>@Html.DisplayFor(model => model.userEmail)</p>
+        }
 
-    <div class="fb-share-button" data-href="https://fant.azurewebsites.net/Annonses/&#123;id?]" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffant.azurewebsites.net%2FAnnonses%2F%257Bid%3F%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Del</a></div>
+        @*
+            <div class="form-group">
+                <textarea id="message" rows="3"></textarea>
+                <button id="send-message" class="btn btn-primary-create">Send melding</button>
+            </div>*@
+
+        <div class="fb-share-button" data-href="https://fant.azurewebsites.net/Annonses/&#123;id?]" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffant.azurewebsites.net%2FAnnonses%2F%257Bid%3F%255D&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Del</a></div>
 
 
-</dl>
+    </dl>
 </div>
 
 
@@ -69,7 +69,12 @@
 
 <a asp-action="Edit" asp-route-id="@Model.annonse.Id">Edit</a> |
 <a asp-action="Index">Back to List</a>|
-<a asp-action="Delete" asp-route-id="@Model.annonse.Id">Delete</a>
+
+@if (Model.annonse.UserId == Model.userId)
+{
+    <a asp-action="Delete" asp-route-id="@Model.annonse.Id">Delete</a>
+}
+e
 
 
 

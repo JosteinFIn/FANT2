@@ -75,11 +75,20 @@ namespace FANT2.Controllers
                 return NotFound();
             }
 
+            string loggedInUserId = string.Empty;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                loggedInUserId = (await _userManager.GetUserAsync(User)).Id;
+            }
+
             var result = new UserAnnonse
             {
 	            annonse = annonse,
 	            userEmail = user.Email,
+                userId = loggedInUserId,
                 loggedIn = User.Identity.IsAuthenticated
+                
             };
             return View(result);
         }
