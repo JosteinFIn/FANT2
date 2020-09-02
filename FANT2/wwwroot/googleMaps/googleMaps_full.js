@@ -1,5 +1,10 @@
-function DisplayGoogleMap() {  
-    
+
+window.onload = function () {
+  initMap();
+};
+
+function initMap() {  
+    window.onload
     var mapElement = document.getElementById("mapContainer");
     mapElement.style.display = "block";
     //Set the Latitude and Longitude of the Map  
@@ -52,16 +57,8 @@ function DisplayGoogleMap() {
       marker.setMap(null);
       addMarker(event.latLng, map);
       
-        console.log(event.latLng);
-        console.log(event.latLng.lat())
-        console.log(event.latLng.lng())
-      // document.getElementById("Location").value = event.latLng.toString();
-      document.getElementById("Lat").value = event.latLng.lat().toString();
-      document.getElementById("Lng").value = event.latLng.lng().toString();
-
-
-      // event.latLng.lat()
-      // event.latLng.lng()
+      // console.log(event.latLng.toString());
+      document.getElementById("Location").value = event.latLng.toString();
     });
     
 

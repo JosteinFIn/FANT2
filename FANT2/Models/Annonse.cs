@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace FANT2.Models
 {
-    public class Annonse
-    {
+	public class Annonse
+	{
 		public int Id { get; set; }
 
 		public string UserId { get; set; }
@@ -20,7 +20,9 @@ namespace FANT2.Models
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public DateTime Date { get; set; }
-		public string Location { get; set; }
+		public string Lat { get; set; }
+		public string Lng { get; set; }
+
 
 	}
 }
