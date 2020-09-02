@@ -340,11 +340,9 @@ form-create {
     font-size: large;
 }
 
-.logout {
+#logout {
     color: black;
     font-weight: bold;
 }
 
-.logoutForm {
-    display: -webkit-inline-box;
-}
+
