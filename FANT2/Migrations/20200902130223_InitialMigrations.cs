@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FANT2.Migrations
 {
-    public partial class InitMigration : Migration
+    public partial class InitialMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,6 +57,21 @@ namespace FANT2.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Melding",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Melding = table.Column<string>(nullable: true),
+                    FromUserId = table.Column<string>(nullable: true),
+                    AnnonseId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Melding", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,7 +193,8 @@ namespace FANT2.Migrations
                     IsValuable = table.Column<bool>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: false),
+                    Location = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -255,6 +271,9 @@ namespace FANT2.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Melding");
 
             migrationBuilder.DropTable(
                 name: "Category");

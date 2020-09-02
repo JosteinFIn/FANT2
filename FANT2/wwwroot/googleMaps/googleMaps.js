@@ -10,7 +10,7 @@ function DisplayGoogleMap() {
     var mapOptions = {  
         center: myAddress,  
         zoom: 15,  
-        minZoom: 30,  
+        // minZoom: 30,  
         mapTypeId: google.maps.MapTypeId.ROADMAP  
     }; 
 
@@ -43,6 +43,7 @@ function DisplayGoogleMap() {
       marker = new google.maps.Marker({
         position: location,
         // label: labels[labelIndex++ % labels.length],
+        title: google.maps.getPlaces,
         map: map
       });
     }
@@ -50,12 +51,14 @@ function DisplayGoogleMap() {
     google.maps.event.addListener(map, 'click', function(event) {
       marker.setMap(null);
       addMarker(event.latLng, map);
-      console.log(markers);
+      
+      // console.log(event.latLng.toString());
+      document.getElementById("Location").value = event.latLng.toString();
     });
     
 
 
-  let markers = [];
+  // let markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener("places_changed", () => {
@@ -64,11 +67,13 @@ function DisplayGoogleMap() {
     if (places.length == 0) {
       return;
     }
+    /*
     // Clear out the old markers.
     markers.forEach(marker => {
       marker.setMap(null);
     });
     markers = [];
+    */
     // For each place, get the icon, name and location.
     const bounds = new google.maps.LatLngBounds();
     places.forEach(place => {
@@ -83,6 +88,15 @@ function DisplayGoogleMap() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+
+      marker.setMap(null);
+      addMarker(place.geometry.location, map);
+
+      // document.getElementById("lonlat").value = marker.location;
+
+
+      // console.log(marker);
+      /*
       // Create a marker for each place.
       markers.push(
         new google.maps.Marker({
@@ -91,7 +105,7 @@ function DisplayGoogleMap() {
           title: place.name,
           position: place.geometry.location
         })
-      );
+      );*/
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.

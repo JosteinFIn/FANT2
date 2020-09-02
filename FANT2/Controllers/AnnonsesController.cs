@@ -137,6 +137,7 @@ namespace FANT2.Controllers
                     TypeAnnonse = annonse.TypeAnnonse,
                     Date = annonse.Date,
                     Image = annonse.Image,
+                    Location = annonse.Location
                 };
 
                 if (model.IsValuable)

@@ -21,6 +21,7 @@ namespace FANT2.ViewModels
 		public string Description { get; set; }
 		public DateTime Date { get; set; } = DateTime.Today;
 		public string Image { get; set; }
+		public string Location { get; set; }
 
 	}
 }

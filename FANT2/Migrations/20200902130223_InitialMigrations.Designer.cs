@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FANT2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200831081333_InitMigration")]
-    partial class InitMigration
+    [Migration("20200902130223_InitialMigrations")]
+    partial class InitialMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,9 @@ namespace FANT2.Migrations
                     b.Property<bool>("IsValuable")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -72,6 +75,27 @@ namespace FANT2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("FANT2.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnnonseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FromUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Melding")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Melding");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
