@@ -1,37 +1,26 @@
-﻿﻿@model FANT2.Models.AnnonseCategoryModel
+﻿@model IEnumerable<FANT2.Models.Annonse>
 
 @{
     ViewData["Title"] = "Map";
-    var lat = new List<string>();
-    var lon = new List<string>();
-
 }
 
-    @foreach (var item in Model.Annonses)
-    {
-        //item.Location.
-    }
-
+<br />
+<br />
+@*<input type="button" value="Se kart" onclick="DisplayGoogleMap()" />*@
+<br />
+<br />
+<div id="mapContainer">
+    @*<input id="pac-input" class="controls" type="text" placeholder="Søk på sted" />*@
     <br />
     <br />
-    @*<input type="button" value="Se kart" onclick="DisplayGoogleMap()" />*@
+    <div id="map" style="width:100%;height:600px; border-radius: 10px;"></div>
     <br />
-    <br />
-    <div id="mapContainer">
-        @*<input id="pac-input" class="controls" type="text" placeholder="Søk på sted" />*@
-        <br />
-        <br />
-        <div id="map" style="width:100%;height:600px; border-radius: 10px;"></div>
-        <br />
-    </div>
+</div>
 
+<script type="text/javascript">
+    globalStuff = @Html.Raw(JsonConvert.SerializeObject(Model));
+</script>
 
-    <script type="text/javascript">
-
-    function addMarker(){
-
-    }
-    </script>
-    <script src="~/googleMaps/googleMaps_full.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRFFoSKFICLoH-f--RW2EHqA2OzwVLE4&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRFFoSKFICLoH-f--RW2EHqA2OzwVLE4&libraries=places"></script>
+<script type="text/javascript" src="~/googleMaps/googleMaps_full.js" asp-append-version="true"></script>
 
