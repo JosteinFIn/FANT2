@@ -1,11 +1,24 @@
+(function () {
+    markers = [];
+    map = {};
 
-window.onload = function () {
-  initMap();
-};
+    initMap();
+})();
+
+function addMarker() {
+    console.log(globalStuff)
+
+    globalStuff.forEach(function (element) {
+      markers.push(new google.maps.Marker({
+          position: { lat: parseFloat(element.Lat), lng: parseFloat(element.Lng) },
+        // label: labels[labelIndex++ % labels.length],
+        // title: google.maps.getPlaces,
+        map: map
+      }))
+    })
+}
 
 function initMap() {
-    console.log('hello');
-    window.onload
     var mapElement = document.getElementById("mapContainer");
     mapElement.style.display = "block";
     //Set the Latitude and Longitude of the Map  
@@ -22,7 +35,7 @@ function initMap() {
 
     var marker = new google.maps.Marker();
     //Display the Google map in the div control with the defined Options  
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);  
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);  
 
     addMarker();
     //Set Marker on the Map  
