@@ -155,7 +155,7 @@ namespace FANT2.Controllers
                     IsValuable = annonse.IsValuable,
                     TypeAnnonse = annonse.TypeAnnonse,
                     Date = annonse.Date,
-                    Image = annonse.Image,
+                    Image = relPath,
                     Lat = annonse.Lat,
                     Lng = annonse.Lng
                 };
