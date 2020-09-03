@@ -38,15 +38,5 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);  
 
     addMarker();
-    //Set Marker on the Map  
-    // var marker = new google.maps.Marker({  
-    //     position: myAddress,  
-    //     animation: google.maps.Animation.BOUNCE,  
-    // });  
-
-    // marker.setMap(map);
-    
-    //---------------
-
 
    }

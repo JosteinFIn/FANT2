@@ -1,5 +1,5 @@
 (function () {
-    markers = [];
+    //markers = [];
     map = {};
 
     initMap();
@@ -18,7 +18,7 @@ function addMarker() {
     //})
 
     new google.maps.Marker({
-            position: { lat: parseFloat(globalStuff.Lat), lng: parseFloat(globalStuff.Lng) },
+            position: { lat: parseFloat(globalStuff.annonse.Lat), lng: parseFloat(globalStuff.annonse.Lng) },
             // label: labels[labelIndex++ % labels.length],
             // title: google.maps.getPlaces,
             map: map
@@ -29,7 +29,8 @@ function initMap() {
     var mapElement = document.getElementById("mapContainer");
     mapElement.style.display = "block";
     //Set the Latitude and Longitude of the Map  
-    var myAddress = new google.maps.LatLng(parseFloat(globalStuff.Lat), parseFloat(globalStuff.Lng));  
+    var myAddress = new google.maps.LatLng(parseFloat(globalStuff.annonse.Lat), parseFloat(globalStuff.annonse.Lng));
+    console.log(globalStuff.Lat)
     
 
     //Create Options or set different Characteristics of Google Map  
