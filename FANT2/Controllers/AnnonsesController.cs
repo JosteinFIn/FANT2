@@ -110,7 +110,7 @@ namespace FANT2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-
+        [DisableRequestSizeLimit]
 		//public async Task<IActionResult> Create(Annonse annonse)
 
 
