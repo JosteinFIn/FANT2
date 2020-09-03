@@ -148,7 +148,9 @@ namespace FANT2.Controllers
 						    base64array = myResult.ToArray();  //Returns a new byte array.
 					    }
 				    }
-				    System.IO.File.WriteAllBytes(filePath, base64array);
+                    base64string = "";
+
+                    System.IO.File.WriteAllBytes(filePath, base64array);
 				}
 
 
