@@ -67,16 +67,16 @@
                     Annonse Type
                     <br>
                     <!-- FORSLAG -->
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    @*<div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-success checked active @(Model.TypeAnnonse ? "active":"")">
                             <input type="radio" name="options" id="option1" autocomplete="off"> Funnet
                         </label>
                         <label class="btn btn-success checked  @(Model.TypeAnnonse ? "active" :"")">
                             <input type="radio" name="options" id="option2" autocomplete="off"> Savnet
                         </label>
-                    </div>
-                    @* <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "false") <label>Funnet</label></div>
-                <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div> *@
+                    </div>*@
+                <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "false") <label>Funnet</label></div>
+                <div class="radio-jquery-ui">@Html.RadioButtonFor(model => model.TypeAnnonse, "true") <label>Savnet</label></div> 
                 </div>
             </div>
 
