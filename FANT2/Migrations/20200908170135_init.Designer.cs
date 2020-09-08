@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FANT2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200903073802_init")]
+    [Migration("20200908170135_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

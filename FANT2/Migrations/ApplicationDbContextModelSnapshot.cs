@@ -41,6 +41,12 @@ namespace FANT2.Migrations
                     b.Property<bool>("IsValuable")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Lat")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lng")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 

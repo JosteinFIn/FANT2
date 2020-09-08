@@ -79,7 +79,7 @@ namespace FANT2
 			});*/
 			
 
-			app.UseHttpsRedirection();
+			//app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
 			app.UseRouting();

@@ -46,6 +46,8 @@ function DisplayGoogleMap() {
         title: google.maps.getPlaces,
         map: map
       });
+      document.getElementById("Lat").value = event.location.lat().toString();
+      document.getElementById("Lng").value = event.location.lng().toString();
     }
 
     google.maps.event.addListener(map, 'click', function(event) {
