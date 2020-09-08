@@ -46,20 +46,22 @@ function DisplayGoogleMap() {
         title: google.maps.getPlaces,
         map: map
       });
-      document.getElementById("Lat").value = event.location.lat().toString();
-      document.getElementById("Lng").value = event.location.lng().toString();
+      console.log(location.lat())
+      console.log(location.lng())
+      document.getElementById("Lat").value = location.lat().toString();
+      document.getElementById("Lng").value = location.lng().toString();
     }
 
     google.maps.event.addListener(map, 'click', function(event) {
       marker.setMap(null);
       addMarker(event.latLng, map);
       
-        console.log(event.latLng);
-        console.log(event.latLng.lat())
-        console.log(event.latLng.lng())
-      // document.getElementById("Location").value = event.latLng.toString();
-      document.getElementById("Lat").value = event.latLng.lat().toString();
-      document.getElementById("Lng").value = event.latLng.lng().toString();
+      //   console.log(event.latLng);
+      //   console.log(event.latLng.lat())
+      //   console.log(event.latLng.lng())
+      // // document.getElementById("Location").value = event.latLng.toString();
+      // document.getElementById("Lat").value = event.latLng.lat().toString();
+      // document.getElementById("Lng").value = event.latLng.lng().toString();
 
 
       // event.latLng.lat()

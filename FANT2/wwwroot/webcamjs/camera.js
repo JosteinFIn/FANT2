@@ -54,7 +54,7 @@ var Camera = {
         // takePhoto();
 
         // function takePhoto() {
-          video.play();
+          // video.play();
           imageCapture.takePhoto()
             // .then (video.pause())
             .then(function(blob) {
@@ -63,7 +63,7 @@ var Camera = {
                 var image = new Image();
                 image.src = blob;
                 image.onload = function () {
-                  video.pause();
+                  
                   console.log(image);
                   // Resize the image
                   var canvas = document.createElement('canvas'),
@@ -86,6 +86,7 @@ var Camera = {
                   canvas.getContext('2d').drawImage(image, 0, 0, width, height);
                   var dataUrl = canvas.toDataURL('image/jpeg');
                   console.log(dataUrl);
+                  video.pause();
                   document.getElementById('Image').value = dataUrl;
                 }
                 image.src = readerEvent.target.result;
