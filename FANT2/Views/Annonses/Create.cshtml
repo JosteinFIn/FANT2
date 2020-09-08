@@ -124,16 +124,16 @@
 </div>
 
 <!-- First, include the Webcam.js JavaScript Library -->
-<script src="~/webcamjs/camera.js"></script>
+<script src="~/webcamjs/camera.js" asp-append-version="true"></script>
 
 <!-- Configure a few settings and attach camera -->
 
-<script language="JavaScript">
+<script language="JavaScript" asp-append-version="true">
     Camera.attach('my_camera');
 
     function take_snapshot() {
         Camera.capture('#image_uri');
-        document.getElementById('new').style.visibility = "visible";
+        //document.getElementById('new').style.visibility = "visible";
     }
     function reset_image(){
         Camera.playVideo();

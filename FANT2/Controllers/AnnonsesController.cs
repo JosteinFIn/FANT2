@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FANT2.Controllers
 {
@@ -59,6 +60,8 @@ namespace FANT2.Controllers
         // GET: Annonses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+	        
+
             if (id == null)
             {
                 return NotFound();
@@ -66,12 +69,28 @@ namespace FANT2.Controllers
 
             var annonse = await _context.Annonse
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == annonse.UserId);
             if (annonse == null)
             {
                 return NotFound();
             }
 
-            return View(annonse);
+            string loggedInUserId = string.Empty;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                loggedInUserId = (await _userManager.GetUserAsync(User)).Id;
+            }
+
+            var result = new UserAnnonse
+            {
+	            annonse = annonse,
+	            userEmail = user.Email,
+                userId = loggedInUserId,
+                loggedIn = User.Identity.IsAuthenticated
+                
+            };
+            return View(result);
         }
 
         // GET: Annonses/Create
@@ -91,41 +110,18 @@ namespace FANT2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [DisableRequestSizeLimit]
+        //public async Task<IActionResult> Create(Annonse annonse)
 
-		//public async Task<IActionResult> Create(Annonse annonse)
 
-
-		public async Task<IActionResult> Create(CreateAnnonse annonse)
+        public async Task<IActionResult> Create(CreateAnnonse annonse)
 
         {
             if (ModelState.IsValid)
             {
                 
 	            var user = await _userManager.GetUserAsync(User);
-
-				//GET IMAGE
-				var base64string = annonse.Image.Substring(annonse.Image.LastIndexOf(',') + 1);
-				var base64array = Convert.FromBase64String(base64string);
-				var relPath = "/img/annonse/" + Guid.NewGuid().ToString() + ".jpg";
-				var filePath = _webHostEnvironment.WebRootPath + relPath;
-
-
-				//RESIZE
-				using (MemoryStream memStream = new MemoryStream(base64array))
-				{
-					MemoryStream myMemStream = new MemoryStream(base64array);
-					Image fullsizeImage = Image.FromStream(myMemStream);
-					if (fullsizeImage.Width > 500)
-					{
-						var scaleRatio = (500.0 / fullsizeImage.Width);
-						Image newImage = fullsizeImage.GetThumbnailImage((int)(fullsizeImage.Width * scaleRatio), (int)(fullsizeImage.Height * scaleRatio), null, IntPtr.Zero);
-						MemoryStream myResult = new MemoryStream();
-						newImage.Save(myResult, System.Drawing.Imaging.ImageFormat.Jpeg);  //Or whatever format you want.
-						base64array = myResult.ToArray();  //Returns a new byte array.
-					}
-				}
-
-				System.IO.File.WriteAllBytes(filePath, base64array);
+                
 
 				var model = new Annonse
                 {

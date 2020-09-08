@@ -76,7 +76,7 @@ namespace FANT2
 				var result = string.IsNullOrEmpty(_myDbContext) ? "Null" : _myDbContext;
 				await context.Response.WriteAsync($"Secret is {result}");
 			});*/
-			
+
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
