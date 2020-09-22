@@ -134,7 +134,8 @@
     Camera.attach('my_camera');
 
     function take_snapshot() {
-        Camera.capture('#image_uri');
+        @* Camera.capture('#image_uri'); *@
+        Camera.grabFrame();
         document.getElementById('new').style.visibility = "visible";
     }
     function reset_image(){

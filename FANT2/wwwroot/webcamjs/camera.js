@@ -5,6 +5,7 @@ if (
 
 var imageCapture;
 const video = document.querySelector("#my_camera");
+var width, height;
 
 var Camera = {
     
@@ -29,10 +30,10 @@ var Camera = {
           };
 
           try {
-                const player = document.getElementById(id);
+                // const player = document.getElementById(id);
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then((videoStream) => {
-                      player.srcObject = videoStream;
+                      video.srcObject = videoStream;
                       const track = videoStream.getVideoTracks()[0];
                       imageCapture = new ImageCapture(track);
                     })
@@ -43,6 +44,25 @@ var Camera = {
               throw alert(error, "No inteface found");
           }
           
+      },
+
+      grabFrame: function(){
+
+        var canvas = document.createElement('canvas')
+        imageCapture.grabFrame().then(function(bitmapImage){
+          
+          console.log('Grabbed frame:', bitmapImage);
+          canvas.width = bitmapImage.width;
+          canvas.height = bitmapImage.height;
+          canvas.getContext('2d').drawImage(bitmapImage, 0, 0);
+          // canvas.classList.remove('hidden');
+          video.pause();
+          var dataUrl = canvas.toDataURL('image/jpeg');
+          console.log(dataUrl);
+          document.getElementById('Image').value = dataUrl;
+        })
+
+        
       },
 
       capture: function(){
