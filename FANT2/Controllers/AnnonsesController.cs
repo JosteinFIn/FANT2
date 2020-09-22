@@ -121,38 +121,6 @@ namespace FANT2.Controllers
 			{
 				
 				var user = await _userManager.GetUserAsync(User);
-				string relPath = "";
-
-
-				//if (annonse.Image != null)
-				//{
-				//	//GET IMAGE
-				//	var base64string = annonse.Image.Substring(annonse.Image.LastIndexOf(',') + 1);
-
-				//	var base64array = Convert.FromBase64String(base64string);
-				//	relPath = "/img/annonse/" + Guid.NewGuid().ToString() + ".jpg";
-				//	var filePath = _webHostEnvironment.WebRootPath + relPath;
-
-
-				//	//RESIZE
-				//	using (MemoryStream memStream = new MemoryStream(base64array))
-				//	{
-				//		MemoryStream myMemStream = new MemoryStream(base64array);
-				//		Image fullsizeImage = Image.FromStream(myMemStream);
-				//		if (fullsizeImage.Width > 500)
-				//		{
-				//			var scaleRatio = (500.0 / fullsizeImage.Width);
-				//			Image newImage = fullsizeImage.GetThumbnailImage((int)(fullsizeImage.Width * scaleRatio), (int)(fullsizeImage.Height * scaleRatio), null, IntPtr.Zero);
-				//			MemoryStream myResult = new MemoryStream();
-				//			newImage.Save(myResult, System.Drawing.Imaging.ImageFormat.Jpeg);  //Or whatever format you want.
-				//			base64array = myResult.ToArray();  //Returns a new byte array.
-				//		}
-				//	}
-				//	base64string = "";
-
-				//	System.IO.File.WriteAllBytes(filePath, base64array);
-				//}
-
 
 				var model = new Annonse
 				{

@@ -22,7 +22,7 @@
                 <video autoplay id="my_camera" class="videoInsert rounded"></video> 
 
                 <!-- Saving image to hidden field -->
-                <input type="hidden" id="image_uri" name="ImageUri" />
+                @* <input type="hidden" id="image_uri" name="ImageUri" /> *@
 
 
                 <!-- A button for taking snaps -->
@@ -173,9 +173,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFRFFoSKFICLoH-f--RW2EHqA2OzwVLE4&libraries=places"></script> 
 
 <script type="text/javascript">  
-        function DisplayGoogleMap();
-         
-</script>  
+    function DisplayGoogleMap();
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

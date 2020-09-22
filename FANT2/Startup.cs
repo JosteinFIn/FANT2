@@ -71,16 +71,16 @@ namespace FANT2
 				app.UseHsts();
 			}
 
-			/*
+            /*
 			app.Run(async (context) =>
 			{
 				var result = string.IsNullOrEmpty(_myDbContext) ? "Null" : _myDbContext;
 				await context.Response.WriteAsync($"Secret is {result}");
 			});*/
-			
 
-			//app.UseHttpsRedirection();
-			app.UseStaticFiles();
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
 			app.UseRouting();
 
